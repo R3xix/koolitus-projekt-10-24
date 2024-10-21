@@ -1,0 +1,110 @@
+.rectangle {
+  height: 5px;
+  width: 200px;
+  background-color:  rgb(120, 120, 167 );
+  margin: 100px 47%;
+  
+}
+.main-picture {
+  height: 600px;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 10px;
+
+} 
+
+.navigation-pictures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.navigation-pictures img {
+  height: 150px;
+  width: 250px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.navigation-pictures img:hover {
+  scale: 1.1;
+  transition: 0.5s;
+  box-shadow: 0 8px 100px 0px;
+}
+
+.main-link {
+  color: rgb(66, 18, 18);
+  background-color: white;
+  width: 300px;
+  height: 200px;
+  padding: 20px 0;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Roboto';
+  margin-left: 10%;
+}
+
+.pealkiri {
+  margin: 10;
+  text-align: center;
+  font-family: 'Roboto';
+  box-shadow: 8px; 
+}
+
+.tavatekst {
+  font-family: 'Roboto' ;
+  margin: 0%;
+  margin-left: 45%;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.video {
+  margin: 10px 0%;
+  margin-top: 10%;
+  margin-left: 5%;
+}
+
+.facebook-button {
+ height: 30px;
+ padding: 30px 20px;
+ font-size: 10px;
+ 
+}
+
+.facebook-button span {
+  position: relative;
+  top: -30px;
+  height: 30px;
+  color: white;
+}
+.facebook-button:hover {
+  color: #7ba9c3;
+  cursor: pointer;
+}
+
+.facebook {
+  font-family: 'Roboto';
+
+}
+
+.videod {
+  margin: 100px 0%;
+  margin-top: 10%;
+  margin-left: 0%;
+  display: flex;
+  font-family: 'Roboto';
+}
+
+.video-tekst {
+  margin-left: 10%;
+  margin-top: 20%;
+  
+ 
+  
+
+
+}
+
+

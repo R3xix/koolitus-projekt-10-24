@@ -7,6 +7,8 @@ import Kinkekaart from './pages/Kinkekaart';
 import Ostukorv from './pages/Ostukorv';
 import LisaToode from './pages/LisaToode';
 import Seaded from './pages/Seaded';
+import Kalkulaator from './pages/Kalkulaator';
+import NotFound from './pages/NotFound';
 
 // igal HTML elemendil peab olema algus ja lõpp või ta on self-closing
 // HTMLi omadused pannakse alguse sisse: <div OMADUSED_SIIA></div>
@@ -14,6 +16,9 @@ import Seaded from './pages/Seaded';
 function App() {
   return (
     <div className="App">
+
+
+
 
 
       <Link to="/">
@@ -39,6 +44,9 @@ function App() {
       <Link to="/seaded">
         <button className="nupp">Seaded</button>
       </Link>
+      <Link to="/kalkulaator">
+        <button className="nupp">Kalkulaator</button>
+      </Link>
 
       
         
@@ -48,12 +56,15 @@ function App() {
      */}
 
      <Routes>
-     <Route path="" element={<Avaleht />}/>
+      <Route path="" element={<Avaleht />}/>
       <Route path="esindused" element={<Esindused />}/>
       <Route path="osta-kinkekaart" element={<Kinkekaart />}/>
       <Route path="ostukorv" element={<Ostukorv />}/>
-      <Route path="lisa toode" element={<LisaToode/>}/>
+      <Route path="lisa-toode" element={<LisaToode/>}/>
       <Route path="seaded" element={<Seaded/>}/>
+      <Route path="kalkulaator" element={<Kalkulaator/>}/>
+      <Route path="*" element={<NotFound/>}/>
+
      </Routes>
     </div>
   );
