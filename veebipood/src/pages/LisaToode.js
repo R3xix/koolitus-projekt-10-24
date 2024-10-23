@@ -1,16 +1,26 @@
-import React, { useState }from 'react'
+import React, { useRef,useState }from 'react'
 
 function LisaToode() {
 
   const [sonum, muudaSonum] = useState ();
   // muutuja, muutja
 
+  const toodeRef = useRef();  // htmli inputi sesst sisestuse lugemiseks
+
+  function lisa () {
+  // toodeRef.current.value === "" ? muudaSonum ("Tühja nimega ei saa toodet lisada") : muuda("Lisatud")
+  
+    if (toodeRef.current.value === "") {muudaSonum("Tühja nimega ei saa toodet lisada");} 
+    else {muudaSonum("Toode lisatud: " + toodeRef.current.value);}
+    
+  }
+
   return (
     <div>
       <div> {sonum} </div>
       <label> Toote nimi</label> <br />
-      <input type="text" /><br />
-      <button onClick={() => muudaSonum("Toode lisatud!")}>Sisesta</button><br />
+      <input ref={toodeRef} type="text" /><br />
+      <button onClick={lisa}>Sisesta</button><br />
 
 
 

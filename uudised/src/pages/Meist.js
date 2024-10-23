@@ -1,7 +1,12 @@
-import React from 'react'
+import { useState} from 'react'
 
 
 function Meist() {
+
+  const [n2itaTelArvo, muudaN2itaTelArvo] =useState(false);
+  const [n2itaTelEduard, muudaN2itaTelEduard] =useState(false);
+  const [n2itaTelNils, muudaN2itaTelNils] =useState(false);
+
   return (
     <div>
         <br /><br />
@@ -14,12 +19,21 @@ function Meist() {
         <br /><br />
         <div>Mida ma tahan ja mida me tahame? Kuidas seda saavutada?
         Teadlik planeerimine on pigem elustiil ja valikute tegemise oskus, kui tavapärane tulevikust unistamine</div>
-        <br /><br />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMrwLQGVp1l1iJh5sxDpj6Knscn6NB3XtHrA&s" alt="" />
+        <br />
+        <div onClick={() => muudaN2itaTelArvo(!n2itaTelArvo)}>Arvo Pärt</div>
+        {n2itaTelArvo &&<div>+38469295</div>}
+        <div>Uudiste toimetaja</div>
+        <br />
+        <div onClick={() => muudaN2itaTelEduard(!n2itaTelEduard)}>Eduard Kilu</div>
+        {n2itaTelEduard &&<div>+9864296529856</div>}
+        <div>Meelelahutaja</div>
+        <br />
+        <div onClick={() => muudaN2itaTelNils(!n2itaTelNils)}>Nils Haamer</div>
+        {n2itaTelNils &&<div>+41740147</div>}
+        <div>Koristaja</div>
 
 
-        
-        
+
     </div>
   )
 }
