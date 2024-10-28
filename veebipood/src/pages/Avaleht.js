@@ -2,6 +2,24 @@ import React, { useState } from 'react'
 
 function Avaleht() {
   const [laigitud, muudaLaigitud] = useState(true);
+  const [kogus, muudaKogus] = useState(0);
+  const [sonum, muudaSonum] = useState("Muuda kogust");
+
+  function nulli () {
+    muudaKogus(0);
+    muudaSonum("Kogus nullitud!");
+
+  }
+
+  function vahenda( ) {
+    muudaKogus(kogus - 1);
+    muudaSonum("Kogus vähendatud!");
+  }
+  function suurenda( ) {
+    muudaKogus(kogus +1);   
+    muudaSonum("Kogus suurendatud!");
+  }
+
 
   // string - sõna lisaks 
   // number - saan teda kokku liita/ lahutada/korruta/jagada
@@ -22,7 +40,15 @@ function Avaleht() {
       <br />
       {/* 2.variant */}
       <button onClick={() => muudaLaigitud(!laigitud)}>Muuda like'i</button>
-      
+      <br />
+      <br />
+
+      <div>{sonum}</div>
+      {kogus > 0 && <button onClick={nulli}>Tagasi nulli</button>} <br />
+
+      <button  disabled={kogus === 0} onClick = {vahenda} >-</button>
+      <span>{kogus}</span>
+      <button onClick = {suurenda} >+</button>
 
 
 
@@ -31,3 +57,8 @@ function Avaleht() {
 }
 
 export default Avaleht
+
+
+// 6.11 9.00
+
+// 12.11 ja 14.11 teisip - neljap

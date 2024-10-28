@@ -1,8 +1,15 @@
 import { useState } from 'react'
 
 function LisaArvuti() {
+  const [message, setMessage] = useState("Lisa arvuti!");
+  const [n2itaNuppu, uuendaN2itaNuppu] = useState(true);
 
-  const [message, setMessage] = useState("Lisa arvuti");
+  function addProduct() {
+    setMessage("Arvuti lisatud");
+    uuendaN2itaNuppu(false);
+
+
+  }
 
   return (
     <div>
@@ -13,7 +20,7 @@ function LisaArvuti() {
       <input type="text" /><br />
       <label>Maksumus</label>
       <input type="number" /><br />
-      {message === "Lisa arvuti" && <button onClick={() => setMessage("Lisatud!")}>Sisesta</button>}
+       {n2itaNuppu === true && <button onClick={() => addProduct()}>Sisesta</button>}
        
 
 

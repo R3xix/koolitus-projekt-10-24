@@ -13,10 +13,10 @@ function App() {
         <button>Avalehele</button>
       </Link>
       <Link to="/lisa-tegelane">
-        <button>Avalehele</button>
+        <button>LisaTegelane</button>
       </Link>
       <Link to="/valitud-tegelased">
-        <button>Avalehele</button>
+        <button>ValitudTegelased</button>
       </Link>
 
       <Routes>

@@ -5,11 +5,7 @@ import { Link } from "react-router-dom" ;
 function Work() {
   return (
     <div>
-        <p>loonoioini
-            <br /><br />
-            kufkaufaf
-        </p>
-
+       <Work1/>
 
      <div>
         <Link to="/"><button class>Tagasi</button></Link>

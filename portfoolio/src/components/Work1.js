@@ -2,7 +2,13 @@ import React from 'react'
 
 function Work1() {
   return (
-    <div>Work1</div>
+    <div>
+      <p>loonoioini
+            <br /><br />
+            kufkaufaf
+        </p>
+
+    </div>
   )
 }
 
