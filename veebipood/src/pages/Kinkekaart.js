@@ -46,7 +46,7 @@ function Kinkekaart() {
       <br />
       <br />
 
-      Kinkekaartide kogusumma: <span>{summa * kogus}</span>
+      Kinkekaartide kogusumma: <span>{summa * kogus} €</span>
 
       <div>{sonum}</div>
 

@@ -2,7 +2,7 @@
 import './App.css';
 import { Route, Routes } from "react-router-dom" ;
 import Avaleht from './pages/Avaleht';
-import Esindused from './pages/Esindused';
+import Esindused from './pages/arrays/Esindused';
 import Kinkekaart from './pages/Kinkekaart';
 import Ostukorv from './pages/Ostukorv';
 import LisaToode from './pages/LisaToode';
@@ -10,6 +10,9 @@ import Seaded from './pages/Seaded';
 import Kalkulaator from './pages/Kalkulaator';
 import NotFound from './pages/NotFound';
 import Menyy from './components/Menyy';
+import Hinnad from './pages/arrays/Hinnad';
+import Tootajad from './pages/arrays/Tootajad';
+import Tooted from './pages/arrays/Tooted';
 
 
 // igal HTML elemendil peab olema algus ja lõpp või ta on self-closing
@@ -34,6 +37,9 @@ function App() {
       <Route path="seaded" element={<Seaded/>}/>
       <Route path="kalkulaator" element={<Kalkulaator/>}/>
       <Route path="*" element={<NotFound/>}/>
+      <Route path="hinnad" element={<Hinnad/>}/>
+      <Route path="tootajad" element={<Tootajad/>}/>
+      <Route path="tooted" element={<Tooted/>}/>
 
      </Routes>
     </div>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react' // reactist 
+import { Link } from 'react-router-dom' // Link, Route, Routes URLiga seotud
 
 // kirjutamisel 2 varianti
 // 1. emmet  div+enter ------div div
@@ -9,13 +9,21 @@ import { Link } from 'react-router-dom'
 
 
 function Ostukorv() {
+  const [tooted, muudaTooted] = useState(["coca","fanta","sprite","Vichy","Aura"]);
+// useStaet järgi [] sisse läheb nimekiri toodetest mis eraldatakse jutumärkidega
+
+
   return (
-    <div>Ostukorv
-      <div>Ostukorv on tühi</div>
-      <Link to="/">
+    <div>
+      <button onClick={() => muudaTooted([])} >Tühjenda</button>
+      {tooted.map(toode => <div>{toode}</div>)}
+      
+      {tooted.length === 0&&<div>Ostukorv on tühi <Link to="/">
       Mine avalehele
-      </Link>
+      </Link></div>}
+      
     </div>
+    
   )
 }
 
