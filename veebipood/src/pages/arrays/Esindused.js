@@ -89,7 +89,7 @@ function Esindused() {
           
 
 
-          {esindused.map(esindus => <div> {esindus} </div>)}
+          {esindused.map((esindus, index) => <div key={index}> {esindus} </div>)}
           {/* <div>Ülemiste</div>
           <div>Rocca al Mare</div>
           <div>Magistrali</div>

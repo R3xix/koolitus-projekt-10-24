@@ -13,6 +13,10 @@ import Menyy from './components/Menyy';
 import Hinnad from './pages/arrays/Hinnad';
 import Tootajad from './pages/arrays/Tootajad';
 import Tooted from './pages/arrays/Tooted';
+import HaldaEsindused from './pages/halda/HaldaEsindused';
+import HaldaHinnad from './pages/halda/HaldaHinnad';
+import HaldaTootajad from './pages/halda/HaldaTootajad';
+import HaldaTooted from './pages/halda/HaldaTooted';
 
 
 // igal HTML elemendil peab olema algus ja lõpp või ta on self-closing
@@ -36,10 +40,20 @@ function App() {
       <Route path="lisa-toode" element={<LisaToode/>}/>
       <Route path="seaded" element={<Seaded/>}/>
       <Route path="kalkulaator" element={<Kalkulaator/>}/>
-      <Route path="*" element={<NotFound/>}/>
+
+      
       <Route path="hinnad" element={<Hinnad/>}/>
       <Route path="tootajad" element={<Tootajad/>}/>
       <Route path="tooted" element={<Tooted/>}/>
+
+      <Route path="halda-esindused" element={<HaldaEsindused/>}/>
+      <Route path="halda-hinnad" element={<HaldaHinnad/>}/>
+      <Route path="halda-tootajad" element={<HaldaTootajad/>}/>
+      <Route path="halda-tooted" element={<HaldaTooted/>}/>
+
+      <Route path="*" element={<NotFound/>}/>
+      
+
 
      </Routes>
     </div>
@@ -47,3 +61,10 @@ function App() {
 }
 
 export default App;
+// 8.  K 06.11   9.00
+
+// 9.  K 13.11   13.30
+// 10. R 15.11   13.30
+
+// 11. E 18.11   13.30
+// 12. K 20.11   13.30

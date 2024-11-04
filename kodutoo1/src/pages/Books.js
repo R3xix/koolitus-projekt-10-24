@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function Books() {
-    const [books, muudaBooks] =  useState(["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", 
+    const [books, muudaBooks] =  useState(["The Great Gatsby", "War and Peace", "Ham let", "MobyDick", 
         "Kevade", "Mees"]);
     const sorteeriAZ = ( ) => {
         books.sort((a, b) => a.localeCompare(b, "et"));
@@ -20,7 +20,7 @@ function Books() {
         muudaBooks(books.slice());
     }
     const sorteeriSõnadeArv = ( ) => {
-        books.sort((a, b) => a.split("").length-b.split("").length);
+        books.sort((a, b) => a.split(" ").length-b.split(" ").length);
         muudaBooks(books.slice());
     }
     const sorteeriEelviimanetaht = ( ) => {
@@ -56,7 +56,7 @@ function Books() {
 
     const reset = ( ) => {
         
-        muudaBooks(["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", 
+        muudaBooks(["The Great Gatsby", "War and Peace", "Ham let", "MobyDick", 
         "Kevade", "Mees"]);
     }
 

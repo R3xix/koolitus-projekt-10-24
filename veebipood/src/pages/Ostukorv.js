@@ -16,7 +16,13 @@ function Ostukorv() {
   return (
     <div>
       <button onClick={() => muudaTooted([])} >Tühjenda</button>
-      {tooted.map(toode => <div>{toode}</div>)}
+      {tooted.map((toode, index) => 
+      <div key={index}>
+        {toode}
+        <button>x</button>
+      </div>
+    
+    )}
       
       {tooted.length === 0&&<div>Ostukorv on tühi <Link to="/">
       Mine avalehele
