@@ -8,6 +8,13 @@ import Seaded from './pages/Seaded';
 import {useRef, useState } from 'react'
 import Leht from './pages/Leht';
 import Loader from './pages/Loader';
+import Animals from './arrays/Animals';
+import Words from './arrays/Words';
+import Months from './arrays/Months';
+import Books from './pages/Books';
+import Numbrid from './arrays/Numbrid';
+
+
 
 function App() {
 
@@ -66,6 +73,21 @@ function App() {
       <Link to="/loader">
         <button>Loader</button>
       </Link>
+      <Link to="/animals">
+        <button>Animal</button>
+      </Link>
+      <Link to="/words">
+        <button>Words</button>
+      </Link>
+      <Link to="/months">
+        <button>Months</button>
+      </Link>
+      <Link to="/books">
+        <button>Books</button>
+      </Link>
+      <Link to="/numbrid">
+        <button>Numbrid</button>
+      </Link>
       
      
 
@@ -83,7 +105,11 @@ function App() {
         <Route path='seaded' element={ <Seaded/>}></Route>
         <Route path='leht' element={ <Leht/>}></Route>
         <Route path='loader' element={ <Loader/>}></Route>
-
+        <Route path='animals' element={ <Animals/>}></Route>
+        <Route path='words' element={ <Words/>}></Route>
+        <Route path='months' element={ <Months/>}></Route>
+        <Route path='books' element={ <Books/>}></Route>
+        <Route path='numbrid' element={ <Numbrid/>}></Route>
       </Routes>
        
         

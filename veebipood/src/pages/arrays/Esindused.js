@@ -32,7 +32,7 @@ function Esindused() {
 
 
   const sorteeriKolmastahtAZ = ( ) => {
-    esindused.sort((a, b) => a[2].localeCompare([2], "et"));
+    esindused.sort((a, b) => a[2].localeCompare(b[2], "et"));
     muudaEsindused(esindused.slice());
     //0123456789
     // Kristiine Ülemiste
