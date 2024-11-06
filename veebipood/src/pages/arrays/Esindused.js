@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Esindus from '../../components/Esindus'
+import esindusedFailist from "../../data/esindused.json"
 
 // loogeliste sulgude vahel on JavaScript --- muutujad
 
@@ -8,7 +9,7 @@ import Esindus from '../../components/Esindus'
 function Esindused() {
 
   const [linn,muudaLinn] = useState("Tallinn");
-  const [esindused, muudaEsindused] = useState(["Ülemiste","Rocca al Mare","Magistrali","Vesse","Kristiine","Järveotsa"]);
+  const [esindused, muudaEsindused] = useState(esindusedFailist.slice());
   
   const sorteeriAZ = ( ) => {
     //esindused.sort();
@@ -38,29 +39,29 @@ function Esindused() {
     // Kristiine Ülemiste
   }
   const FiltreeriEgaLoppevad = ( ) => {
-    const vastus = esindused.filter(esindus => esindus.endsWith("e"));
+    const vastus = esindusedFailist.filter(esindus => esindus.endsWith("e"));
     muudaEsindused(vastus);
   }
 
   const FiltreeriVah7Tahelised = ( ) => {
-    const vastus = esindused.filter(esindus => esindus.length >= 7);
+    const vastus = esindusedFailist.filter(esindus => esindus.length >= 7);
     muudaEsindused(vastus);
   }
 
   const Filtreeri9Tahelised = ( ) => {
-    const vastus = esindused.filter(esindus => esindus.length === 9);
+    const vastus = esindusedFailist.filter(esindus => esindus.length === 9);
     muudaEsindused(vastus);
   }
   const FiltreeriIsSisaldavad = ( ) => {
-    const vastus = esindused.filter(esindus => esindus.includes("is"));
+    const vastus = esindusedFailist.filter(esindus => esindus.includes("is"));
     muudaEsindused(vastus);
   }
   const FiltreeriNeljasTahtS = ( ) => {
-    const vastus = esindused.filter(esindus => esindus[3] === "s");
+    const vastus = esindusedFailist.filter(esindus => esindus[3] === "s");
     muudaEsindused(vastus);
   }
   const reset =() => {
-    muudaEsindused(["Ülemiste","Rocca al Mare","Magistrali","Vesse","Kristiine","Järveotsa"])
+    muudaEsindused(esindusedFailist.slice())
   }
 
   return (

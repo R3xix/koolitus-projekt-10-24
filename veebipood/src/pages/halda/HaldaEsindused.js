@@ -1,37 +1,63 @@
 import React, { useRef, useState } from 'react'
+import esindusedJSON from "../../data/esindused.json"
+
 
 function HaldaEsindused() {
                                            //        0               1            2          3        4           5       
-    const [esindused, muudaEsindused] = useState(["Ülemiste","Rocca al Mare","Magistrali","Vesse","Kristiine","Järveotsa"]);
+    const [esindused, muudaEsindused] = useState(esindusedJSON.slice());
     const esindusRef = useRef();
+    const otsingRef= useRef();
     const kustutaEsimene = ( ) => {
-        esindused.splice(0, 1); // .splice ---kustutamiseks
+        esindusedJSON.splice(0, 1); // .splice ---kustutamiseks
                //number 0 = tähendab mitmendat järjekorras
                // number 1 tähendab mitu tükki alates sellest elemendist
-               muudaEsindused(esindused.slice()); // sama mis .sort() järgselt
+               muudaEsindused(esindusedJSON.slice()); // sama mis .sort() järgselt
                // uuendab htmli, pannes uuendatud esindused esindused muutuja peale       
     }
     const kustutaTeine = ( ) => {
-        esindused.splice(1, 1);
-        muudaEsindused(esindused.slice());
+        esindusedJSON.splice(1, 1);
+        muudaEsindused(esindusedJSON.slice());
     }
     const kustutaKolmas = ( ) => {
-        esindused.splice(2, 1);
-        muudaEsindused(esindused.slice());
+        esindusedJSON.splice(2, 1);
+        muudaEsindused(esindusedJSON.slice());
     }
     const kustuta = (index) => {
-        esindused.splice(index, 1);
-        muudaEsindused(esindused.slice());
+        esindusedJSON.splice(index, 1);
+        muudaEsindused(esindusedJSON.slice());
 
     }
     const lisaEsindus = ( ) => {
-        esindused.push(esindusRef.current.value);
-        muudaEsindused(esindused.slice());
+        esindusedJSON.push(esindusRef.current.value);
+        muudaEsindused(esindusedJSON.slice());
         esindusRef.current.value = "";
     }
+    
+
+    const otsi = ( ) => {
+        // TODO -  tõstutundlikkuse kaotamine ehk saab leida ka läbivate väikeste tähtedega
+        const vastus = esindusedJSON.filter(esindus => esindus.includes(otsingRef.current.value));
+        muudaEsindused(vastus);
+    
+    }
+
+    const arvutaKokku = ( ) => {
+        let summa = 0;
+        esindused.forEach(esindus => summa = summa + esindus.length );
+        return summa; 
+    }
+    
+
  
  return (
     <div>
+
+        <div>Tähti kokku kõikide esinduste peale: {arvutaKokku()} tk</div>
+        <br /><br />
+
+        <input onChange={otsi} ref={otsingRef} type="text" />
+        {/* <button onClick={otsi}>Otsi</button> */}
+        <br /><br />
         <label>Esindus</label><br />
         <input ref={esindusRef }type="text" />
         <br />

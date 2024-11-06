@@ -59,9 +59,7 @@ function Avaleht() {
 export default Avaleht
 
 
-// 6.11 9.00
 
-// 12.11 ja 14.11 teisip - neljap
 // [] --> array jaoks, useState vasakul pool on array
 // {} --> JavaScriptis koodibloki jaoks / objekti jaoks
 //          HTMLs JavaScripti tähistus

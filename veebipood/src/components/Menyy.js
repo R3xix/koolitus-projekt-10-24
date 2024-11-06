@@ -43,6 +43,14 @@ function Menyy() {
       <Link to="/tooted">
         <button className="nupp">Tooted</button>
       </Link>
+      <Link to="/autod">
+        <button className="nupp">Autod</button>
+      </Link>
+      <Link to="/kasutajad">
+        <button className="nupp">Kasutajad</button>
+      </Link>
+
+
       <br /><br />
       <Link to="/esindused">
         <button className="nupp">Meie esindused</button>
@@ -61,6 +69,13 @@ function Menyy() {
       <Link to="/halda-tooted">
         <button className="nupp">Halda tooted</button>
       </Link>
+      <Link to="/halda-autod">
+        <button className="nupp">Halda autod</button>
+      </Link>
+      <Link to="/halda-kasutajad">
+        <button className="nupp">Halda kasutajad</button>
+      </Link>
+
 
 
 

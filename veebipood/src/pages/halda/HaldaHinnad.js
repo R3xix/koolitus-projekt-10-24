@@ -1,22 +1,23 @@
 import React, { useRef, useState } from 'react'
+import hinnadJSON from "../../data/hinnad.json";
 
 function HaldaHinnad() {
-    const [hinnad, muudaHinnad] = useState([45,9,80,123,1000,51,77,321,91,23]);
+    const [hinnad, muudaHinnad] = useState(hinnadJSON);
     const hindRef = useRef();
 
 
     const kustuta = (index) => {
-        hinnad.splice(index, 1);
-        muudaHinnad(hinnad.slice());
+        hinnadJSON.splice(index, 1); //võtan failist ühe hinna vähemaks
+        muudaHinnad(hinnadJSON.slice());
     }
     const lisa = (index) => {
-        hinnad.push(hindRef.current.value);
-        muudaHinnad(hinnad.slice());
+        hinnadJSON.push(hindRef.current.value);
+        muudaHinnad(hinnadJSON.slice());
         hindRef.current.value = "";
     }
   return (
     <div>
-        <label >Uus number</label><br />
+        <label >Uus hind</label><br />
         <input ref={hindRef}type="text" /><br />
         <button onClick={lisa}>Sisesta</button><br />
 

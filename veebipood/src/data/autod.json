@@ -1,0 +1,12 @@
+[
+    {"nimi": "Tesla", "hind": 25000, "aktiivne": true, "pilt": ""},
+    {"nimi": "BMW", "hind": 75000, "aktiivne": true, "pilt": ""},
+    {"nimi": "Bentley", "hind": 1055000, "aktiivne": true, "pilt": ""},
+    {"nimi": "Nissan", "hind": 15000, "aktiivne": false, "pilt": ""},
+    {"nimi": "Toyota", "hind": 45000, "aktiivne": true, "pilt": ""},
+    {"nimi": "Audi", "hind": 65000, "aktiivne": true, "pilt": ""},
+    {"nimi": "Nio", "hind": 85000, "aktiivne": false, "pilt": ""},
+    {"nimi": "KIA", "hind": 35000, "aktiivne": true, "pilt": ""}
+
+    
+]
