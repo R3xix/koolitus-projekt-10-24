@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import autodFailist from "../../data/autod.json"
+import ostukorvFailist from "../../data/ostukorv.json"
+import { Link } from "react-router-dom"
 
 // string ---- "Ülemiste".includes()   "Ülemiste".startsWith()  "Ülemiste".length
 // array ---- [].filter  [].sort  [].forEach [].push  []..splice []..length
@@ -26,6 +28,17 @@ function Autod() {
         autod.forEach(auto => sum = sum + auto.hind);
         return sum;
     }
+    const otsiRef = useRef();
+    const otsi = ( ) => {
+        const vastus = autodFailist.filter(auto => auto.nimi.includes(otsiRef.current.value) );
+        muudaAutod(vastus);
+    }
+
+    function lisaOstukorvi(auto) {
+        ostukorvFailist.push(auto);
+        
+
+    }
 
   return (
     <div>
@@ -37,11 +50,14 @@ function Autod() {
 
         <div>{arvutaKokku()}</div>
         <br /><br />
-
+        <input onChange={otsi} ref={otsiRef} type="text" />
         {autod.map((auto, index) => 
         <div key={index}>
             {auto.nimi} - {auto.hind}€ 
-            
+            <button onClick={() => lisaOstukorvi(auto)}>Lisa ostukorvi</button>
+            <Link to={"/auto/" + index}>
+            <button>Vt autot lähemalt</button>
+            </Link>
         
             
             </div> )}

@@ -1,7 +1,8 @@
 import React, {useRef, useState } from 'react'
+import tootedJSON from "../../data/tooted.json"
 
 function HaldaTooted() {
-    const [tooted, muudaTooted] = useState(["Tesla", "BMW", "Bentley", "Nissan", "Toyota", "Audi", "Nio", "KIA"]);
+    const [tooted, muudaTooted] = useState(tootedJSON);
     const toodeRef = useRef();
 
 
@@ -15,10 +16,17 @@ function HaldaTooted() {
         toodeRef.current.value = "";
     }
     const tühjenda = ( ) => { 
-        muudaTooted(["Tesla", "BMW", "Bentley", "Nissan", "Toyota", "Audi", "Nio", "KIA"])
+        muudaTooted([tootedJSON])
+    }
+    const arvutaKokku = ( ) => {
+        let summa = 0;
+        tooted.forEach(toode => summa = summa + toode.length );
+        return summa; 
     }
   return (
     <div>
+
+        <div>Tähti kokku kõikide toodete peale: {arvutaKokku()} tk</div>
         <label >Uus toode</label><br />
         <input ref={toodeRef}type="text" /><br />
         <button onClick={lisa}>Sisesta</button><br />
@@ -29,7 +37,7 @@ function HaldaTooted() {
                 <tr>
                     <th>Index</th>
                     <th>Jknr</th>
-                    <th>Hind</th>
+                    <th>Toode</th>
                     <th>Kustuta</th>
                 </tr>
             </thead>

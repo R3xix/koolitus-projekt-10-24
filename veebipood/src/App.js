@@ -21,6 +21,12 @@ import HaldaAutod from './pages/halda/HaldaAutod';
 import HaldaKasutajad from './pages/halda/HaldaKasutajad';
 import Autod from './pages/arrays/Autod';
 import Kasutajad from './pages/arrays/Kasutajad';
+import YksEsindus from './pages/yks/YksEsindus';
+import YksHind from './pages/yks/YksHind';
+import YksTootaja from './pages/yks/YksTootaja';
+import YksToode from './pages/yks/YksToode';
+import YksAuto from './pages/yks/YksAuto';
+import YksKasutaja from './pages/yks/YksKasutaja';
 
 
 // igal HTML elemendil peab olema algus ja lõpp või ta on self-closing
@@ -58,6 +64,14 @@ function App() {
       <Route path="halda-tooted" element={<HaldaTooted/>}/>
       <Route path="halda-autod" element={<HaldaAutod/>}/>
       <Route path="halda-kasutajad" element={<HaldaKasutajad/>}/>
+
+      <Route path="esindus/:index" element={<YksEsindus/>}/>
+      <Route path="hind" element={<YksHind/>}/>
+      <Route path="tootaja" element={<YksTootaja/>}/>
+      <Route path="toode" element={<YksToode/>}/>
+      <Route path="auto/:auto_id" element={<YksAuto/>}/>
+      <Route path="kasutaja" element={<YksKasutaja/>}/>
+
 
       <Route path="*" element={<NotFound/>}/>
       

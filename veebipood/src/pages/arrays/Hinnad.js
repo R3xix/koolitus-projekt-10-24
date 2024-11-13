@@ -17,15 +17,15 @@ function Hinnad() {
       muudaHinnad(hinnadFailist.slice())
     }
     const sorteeriKasvavalt = ( ) => {
-        hinnad.sort((a, b) => a - b);
+        hinnad.sort((a, b) => a.number - b.number);
         muudaHinnad(hinnad.slice());
     }
         const sorteeriKahanevalt = ( ) => {
-         hinnad.sort((a, b) => b - a);
+         hinnad.sort((a, b) => b.number - a.number);
         muudaHinnad(hinnad.slice());
     }
     const sorteeriAZ = ( ) => {
-        hinnad.sort();
+        hinnad.sort((a, b) => a.number.toString().localeCompare(b.number.toString))
        muudaHinnad(hinnad.slice());
        // .slice( on vaja kui muudan arrayd ja tahan et see muutus ka htmlis kajastuks
        //-slice() teeb koopia, võtab mälukoha ära, et React ei näeks seda samasugune kui originaal 
@@ -33,12 +33,12 @@ function Hinnad() {
     
     const filtreeriVäiksemKui50 = ( ) => {
       // kui vaja siia panna uus muutuja millele võrdusmärgiga väärtus anda: .slice( pole vaja)
-       const vastus = hinnadFailist.filter(hind => hind< 50 );
+       const vastus = hinnadFailist.filter(hind => hind.number< 50 );
        muudaHinnad(vastus);
     }
 
     const filtreeriSuuremKui100 = ( ) => {
-      const vastus = hinnadFailist.filter(hind => hind > 100 );
+      const vastus = hinnadFailist.filter(hind => hind.number > 100 );
        muudaHinnad(vastus);
 
     }
@@ -56,7 +56,7 @@ function Hinnad() {
       //              45           =       + 45 
       //              45           = 45    + 9
       //              45           = 54   + 80
-      hinnad.forEach(hind => summa = summa + hind );
+      hinnad.forEach(hind => summa = summa + hind.number);
       return summa;
       
 
@@ -66,7 +66,7 @@ function Hinnad() {
   return (
     <div>
 
-          <div>HInnad kokku: {arvutaKokku()}</div>
+          <div>Hinnad kokku: {arvutaKokku()}</div>
           <button onClick={reset}>Kustuta filtrid</button>
           <br /><br />
         
@@ -78,7 +78,7 @@ function Hinnad() {
         <button onClick={filtreeriVäiksemKui50}>Filtreeri väiksem kui 50</button>
         <button onClick={filtreeriSuuremKui100}>Filtreeri suurem kui 100</button>
         
-       {hinnad.map((hind, index) => <div key={index}>{hind}</div>
+       {hinnad.map((hind, index) => <div key={index}>{hind.number}</div>
        )} 
         
     </div>

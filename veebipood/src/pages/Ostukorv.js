@@ -1,6 +1,6 @@
 import React, { useState } from 'react' // reactist 
 import { Link } from 'react-router-dom' // Link, Route, Routes URLiga seotud
-
+import ostukorvFailist from "../data/ostukorv.json";
 // kirjutamisel 2 varianti
 // 1. emmet  div+enter ------div div
 // button+enter ---- button button
@@ -9,17 +9,21 @@ import { Link } from 'react-router-dom' // Link, Route, Routes URLiga seotud
 
 
 function Ostukorv() {
-  const [tooted, muudaTooted] = useState(["coca","fanta","sprite","Vichy","Aura"]);
+  const [tooted, muudaTooted] = useState(ostukorvFailist.slice());
 // useStaet järgi [] sisse läheb nimekiri toodetest mis eraldatakse jutumärkidega
+   function kustuta (index) {
+    ostukorvFailist.splice(index, 1);
+      muudaTooted(ostukorvFailist.slice());
 
+   }
 
   return (
     <div>
       <button onClick={() => muudaTooted([])} >Tühjenda</button>
       {tooted.map((toode, index) => 
       <div key={index}>
-        {toode}
-        <button>x</button>
+        {toode.nimi}
+        <button onClick={() =>kustuta()}>x</button>
       </div>
     
     )}

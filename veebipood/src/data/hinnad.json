@@ -1,1 +1,13 @@
-[45,9,80,123,1000,51,77,321,91,23]
+[
+    {"number": 45, "lisaja": "Reimo"},
+    {"number": 9, "lisaja": "Reimo"},
+    {"number": 80, "lisaja": "Reimo"},
+    {"number": 123, "lisaja": "Reimo"},
+    {"number": 1000, "lisaja": "Reimo"},
+    {"number": 51, "lisaja": "Reimo"},
+    {"number": 77, "lisaja": "Reimo"},
+    {"number": 321, "lisaja": "Reimo"},
+    {"number": 91, "lisaja": "Reimo"},
+    {"number": 23, "lisaja": "Reimo"}
+   
+]

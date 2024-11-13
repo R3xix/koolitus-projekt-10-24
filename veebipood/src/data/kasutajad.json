@@ -1,7 +1,7 @@
 [
-    {
-        "email": "",
-        "parool": "",
-        "aasta": 2003
-    }
+    { "email": "ants@parm.ee","parool": "1234","aasta": 2003 },
+    { "email": "toomas.kuu@parm.ee","parool": "3456","aasta": 2012 },
+    { "email": "leidur.diil@parm.ee","parool": "9876","aasta": 2024 },
+    { "email": "piret.pool@parm.ee","parool": "5647","aasta": 2016 }
+    
 ]

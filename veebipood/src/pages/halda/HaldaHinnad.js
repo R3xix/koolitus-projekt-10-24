@@ -10,15 +10,23 @@ function HaldaHinnad() {
         hinnadJSON.splice(index, 1); //võtan failist ühe hinna vähemaks
         muudaHinnad(hinnadJSON.slice());
     }
-    const lisa = (index) => {
-        hinnadJSON.push(hindRef.current.value);
+    // lisada enteriga
+    const lisa = (event) => {
+
+            console.log(event.key);
+            if (event.key !== "Enter" && event.type !== "click") {
+                return;
+            }
+
+
+        hinnadJSON.push({"number":hindRef.current.value, "lisaja": "Sisselogitu kasutaja"});
         muudaHinnad(hinnadJSON.slice());
         hindRef.current.value = "";
     }
   return (
     <div>
         <label >Uus hind</label><br />
-        <input ref={hindRef}type="text" /><br />
+        <input onKeyUp={lisa} ref={hindRef}type="text" /><br />
         <button onClick={lisa}>Sisesta</button><br />
 
         <table>
@@ -27,6 +35,7 @@ function HaldaHinnad() {
                     <th>Index</th>
                     <th>Jknr</th>
                     <th>Hind</th>
+                    <th>Lisaja</th>
                     <th>Kustuta</th>
                 </tr>
             </thead>
@@ -35,7 +44,8 @@ function HaldaHinnad() {
                 <tr key={index}>
                     <td>{index}</td>
                     <td>{index + 1}</td>
-                    <td>{hind}</td>
+                    <td>{hind.number}</td>
+                    <td>{hind.lisaja}</td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
                 </tr> )}
             </tbody>

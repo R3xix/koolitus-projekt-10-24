@@ -6,6 +6,8 @@ function HaldaEsindused() {
                                            //        0               1            2          3        4           5       
     const [esindused, muudaEsindused] = useState(esindusedJSON.slice());
     const esindusRef = useRef();
+    const telefonRef = useRef(); // iga inputi jaoks oma useRef();
+    const aadressRef = useRef();
     const otsingRef= useRef();
     const kustutaEsimene = ( ) => {
         esindusedJSON.splice(0, 1); // .splice ---kustutamiseks
@@ -25,10 +27,12 @@ function HaldaEsindused() {
     const kustuta = (index) => {
         esindusedJSON.splice(index, 1);
         muudaEsindused(esindusedJSON.slice());
-
     }
+    // kuidas enteriga lisada
     const lisaEsindus = ( ) => {
-        esindusedJSON.push(esindusRef.current.value);
+        esindusedJSON.push(
+            {"nimi":esindusRef.current.value, "tel": telefonRef.current.value, "aadress": aadressRef.current.value}
+        );
         muudaEsindused(esindusedJSON.slice());
         esindusRef.current.value = "";
     }
@@ -36,14 +40,16 @@ function HaldaEsindused() {
 
     const otsi = ( ) => {
         // TODO -  tõstutundlikkuse kaotamine ehk saab leida ka läbivate väikeste tähtedega
-        const vastus = esindusedJSON.filter(esindus => esindus.includes(otsingRef.current.value));
+        const vastus = esindusedJSON.filter(esindus => 
+            esindus.nimi.toLocaleLowerCase().includes(otsingRef.current.value.toLocaleLowerCase())
+        );
         muudaEsindused(vastus);
     
     }
 
     const arvutaKokku = ( ) => {
         let summa = 0;
-        esindused.forEach(esindus => summa = summa + esindus.length );
+        esindused.forEach(esindus => summa = summa + esindus.nimi.length );
         return summa; 
     }
     
@@ -59,8 +65,13 @@ function HaldaEsindused() {
         {/* <button onClick={otsi}>Otsi</button> */}
         <br /><br />
         <label>Esindus</label><br />
-        <input ref={esindusRef }type="text" />
-        <br />
+        <input ref={esindusRef }type="text" /> <br />
+        <label>Telefon</label><br />
+        <input ref={telefonRef }type="text" /> <br />
+        
+        <label>Aadress</label><br />
+        <input ref={aadressRef }type="text" />
+        <br /><br />
         <button onClick={lisaEsindus}>Lisa</button><br />
 
 
@@ -75,6 +86,8 @@ function HaldaEsindused() {
                     <th>Index</th>
                     <th>Jknr</th>
                     <th>Esindus</th>
+                    <th>Telefon</th>
+                    <th>Aadress</th>
                     <th>Kustuta</th>
                 </tr>
   
@@ -86,7 +99,9 @@ function HaldaEsindused() {
                  
                     <td>{index}</td>
                     <td>{index+1}</td>
-                    <td> {esindus}</td>
+                    <td> {esindus.nimi}</td>
+                    <td> {esindus.tel}</td>
+                    <td> {esindus.aadress}</td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
             
                 
@@ -98,5 +113,14 @@ function HaldaEsindused() {
     </div>
   )
 }
-
+// 3 varianti kuidas funktsioone käivitada
+// 1. <button onClick={() => kustuta(index)}></button>
+//          ---> kui midagi saadetakse funktsiooni sisse, siis on vaja panna lõppu sulud ja 
+//               algusesse sulud + nool: () => . Nii on kohustuslik.
+// 2. <button onClick={lisa}></button>
+//          ---> kui midagi ei saadeta funktsiooni sisse, siis pole vaja lõppu sulge panna, aga
+//                kui tahta, siis võib
+//      <button onClick={lisa}></button> on sama, mis  <button onClick={() => lisa()}></button>
+// 3. <div>{arvutaKokku()}</div>    
+//          ---> ilma klikkimata käivitatakse funktsioon. Nii on kohustuslik
 export default HaldaEsindused

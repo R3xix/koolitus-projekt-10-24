@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, {useRef, useState } from 'react'
+import tootajadJSON from "../../data/tootajad.json"
 
 function Tootajad() {
-  const [tootajad, muudaTootajad] = useState(["Kai", "Mihkel", "Reimo", "Leo", "Marinel", "Toomas", "Raido", "Annika"])
+
+  // {"eesnimi": "", "ametikoht": ""; "tel": "548254"}
+  // korda teha sorteeri jne
+  const [tootajad, muudaTootajad] = useState(tootajadJSON.slice())
   const sorteeriAZ = ( ) => {
     tootajad.sort((a, b) => a.localeCompare(b, "et"));
     muudaTootajad(tootajad.slice());
@@ -49,8 +53,22 @@ const FiltreeriPaarisTaht = ( ) => {
   muudaTootajad(vastus);
 } 
 const tühjenda = ( ) => {
-  muudaTootajad(["Kai", "Mihkel", "Reimo", "Leo", "Marinel", "Toomas", "Raido", "Annika"]);
+  muudaTootajad([tootajadJSON]);
 }
+const arvutaKokku = ( ) => {
+  let summa = 0;
+  tootajad.forEach(tootaja => summa += tootaja.length)
+  return summa;
+}
+const otsiRef = useRef();
+
+const otsi = ( ) => {
+  const vastus = tootajadJSON.filter(tootaja => tootaja.includes(otsiRef.current.value) );
+  muudaTootajad(vastus);
+
+}
+
+
 
   // Sorteeri
   // 1. A-Z
@@ -71,6 +89,8 @@ const tühjenda = ( ) => {
   return (
 
     <div> 
+       <input onChange={otsi} ref={otsiRef} type="text" />
+      <div>Tähed kokku: {arvutaKokku()}</div>
       
       {tootajad.map((tootaja, index) =>  <div key={index} >{tootaja}</div> )}
 

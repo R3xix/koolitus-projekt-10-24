@@ -1,8 +1,10 @@
 [
-    "Ülemiste",
-    "Rocca al Mare",
-    "Magistrali",
-    "Vesse",
-    "Kristiine",
-    "Järveotsa"
+    {"nimi": "Ülemiste", "tel": "512342352", "aadress": "Endla 55"},
+    {"nimi": "Rocca al Mare", "tel": "51345452", "aadress": "Pirni 7"},
+    {"nimi": "Magistrali", "tel": "567742352", "aadress": "Krokodilli 8"},
+    {"nimi": "Vesse", "tel": "51865352", "aadress": "Miina Härma 6"},
+    {"nimi": "Kristiine", "tel": "512234352", "aadress": "Seakõrva 78"},
+    {"nimi": "Järveotsa", "tel": "64352567", "aadress": "Muuga tee 4"},
+    {"nimi": "Ämari", "tel": "76543453", "aadress": "Lasnamäe 100"}
+    
 ]
