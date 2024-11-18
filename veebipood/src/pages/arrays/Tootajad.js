@@ -1,5 +1,6 @@
 import React, {useRef, useState } from 'react'
 import tootajadJSON from "../../data/tootajad.json"
+import { Link } from "react-router-dom"
 
 function Tootajad() {
 
@@ -7,63 +8,63 @@ function Tootajad() {
   // korda teha sorteeri jne
   const [tootajad, muudaTootajad] = useState(tootajadJSON.slice())
   const sorteeriAZ = ( ) => {
-    tootajad.sort((a, b) => a.localeCompare(b, "et"));
+    tootajad.sort((a, b) => a.eesnimi.localeCompare(b.eesnimi, "et"));
     muudaTootajad(tootajad.slice());
   }
   const sorteeriZA = ( ) => {
-    tootajad.sort((a, b) => b.localeCompare(a, "et"));
+    tootajad.sort((a, b) => b.eesnimi.localeCompare(a.eesnimi, "et"));
     muudaTootajad(tootajad.slice());
   }
   const sorteeriTahemargidKasv = ( ) => {
-    tootajad.sort((a, b) =>  a.length - b.length);
+    tootajad.sort((a, b) =>  a.eesnimi.length - b.eesnimi.length);
     muudaTootajad(tootajad.slice());
 }
 const sorteeriTahemargidKah = ( ) => {
-  tootajad.sort((a, b) => b.length - a.length);
+  tootajad.sort((a, b) => b.eesnimi.length - a.eesnimi.length);
   muudaTootajad(tootajad.slice());
 }
 const sorteeriTeineTahtAZ = ( ) => {
-  tootajad.sort((a, b) =>   a.localeCompare(b[2]));
+  tootajad.sort((a, b) =>   a.eesnimi.localeCompare(b[2]));
   muudaTootajad(tootajad.slice());
 }
 const Filtreeri3Tähte = ( ) => {
-  const vastus = tootajad.filter(tootaja => tootaja.length === 3);
+  const vastus = tootajad.filter(tootaja => tootaja.eesnimi.length === 3);
   muudaTootajad(vastus);
 }
 
 const Filtreeri5plussTahte = ( ) => {
-  const vastus = tootajad.filter(tootaja => tootaja.length > 5);
+  const vastus = tootajad.filter(tootaja => tootaja.eesnimi.length > 5);
   muudaTootajad(vastus);
 }
 
 const FiltreeriSisAi = ( ) => {
-  const vastus = tootajad.filter(tootaja => tootaja.includes("ai"));
+  const vastus = tootajad.filter(tootaja => tootaja.eesnimi.includes("ai"));
   muudaTootajad(vastus);
 }
 const Filtreeri4siTaht = ( ) => {
-  const vastus = tootajad.filter(tootaja => tootaja[3] === ("i"));
+  const vastus = tootajad.filter(tootaja => tootaja.eesnimi[3] === ("i"));
   muudaTootajad(vastus);
 }
 const FiltreeriMtahtAlg = ( ) => {
-  const vastus = tootajad.filter(tootaja => tootaja.startsWith("M"));
+  const vastus = tootajad.filter(tootaja => tootaja.eesnimi.startsWith("M"));
   muudaTootajad(vastus);
 }
 const FiltreeriPaarisTaht = ( ) => {
-  const vastus = tootajad.filter(tootaja => tootaja.length % 2 === 0);
+  const vastus = tootajad.filter(tootaja => tootaja.eesnimi.length % 2 === 0);
   muudaTootajad(vastus);
 } 
 const tühjenda = ( ) => {
-  muudaTootajad([tootajadJSON]);
+  muudaTootajad(tootajadJSON.slice());
 }
 const arvutaKokku = ( ) => {
   let summa = 0;
-  tootajad.forEach(tootaja => summa += tootaja.length)
+  tootajad.forEach(tootaja => summa += tootaja.eesnimi.length)
   return summa;
 }
 const otsiRef = useRef();
 
 const otsi = ( ) => {
-  const vastus = tootajadJSON.filter(tootaja => tootaja.includes(otsiRef.current.value) );
+  const vastus = tootajadJSON.filter(tootaja => tootaja.eesnimi.toLocaleLowerCase().includes(otsiRef.current.value.toLocaleLowerCase()) );
   muudaTootajad(vastus);
 
 }
@@ -92,7 +93,11 @@ const otsi = ( ) => {
        <input onChange={otsi} ref={otsiRef} type="text" />
       <div>Tähed kokku: {arvutaKokku()}</div>
       
-      {tootajad.map((tootaja, index) =>  <div key={index} >{tootaja}</div> )}
+      {tootajad.map((tootaja, index) =>  <div key={index} >{tootaja.eesnimi} {tootaja.ametikoht} {tootaja.tel}
+      <Link to={"/tootaja/" + index}>
+            <button>Vt lähemalt</button>
+       </Link>
+      </div> )}
 
           <span>Sorteeri: </span>
           <button onClick={sorteeriAZ}>Sorteeri A-Z</button>

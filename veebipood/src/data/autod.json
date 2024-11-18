@@ -1,12 +1,12 @@
 [
-    {"nimi": "Tesla", "hind": 25000, "aktiivne": true, "pilt": ""},
-    {"nimi": "BMW", "hind": 75000, "aktiivne": true, "pilt": ""},
-    {"nimi": "Bentley", "hind": 1055000, "aktiivne": true, "pilt": ""},
-    {"nimi": "Nissan", "hind": 15000, "aktiivne": false, "pilt": ""},
-    {"nimi": "Toyota", "hind": 45000, "aktiivne": true, "pilt": ""},
-    {"nimi": "Audi", "hind": 65000, "aktiivne": true, "pilt": ""},
-    {"nimi": "Nio", "hind": 85000, "aktiivne": false, "pilt": ""},
-    {"nimi": "KIA", "hind": 35000, "aktiivne": true, "pilt": ""}
+    {"nimi": "Tesla", "hind": 25000, "aktiivne": true, "pilt": "https://cdn.motor1.com/images/mgl/Mk3qg6/s1/2017-tesla-roadster-deck-model-petersen-automotive-museum.jpg"},
+    {"nimi": "BMW", "hind": 75000, "aktiivne": true, "pilt": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7b40dc152908689.63263960e7c59.jpg"},
+    {"nimi": "Bentley", "hind": 1055000, "aktiivne": true, "pilt": "https://imgd.aeplcdn.com/1280x720/ec/d2/36/9774/img/m/Bentley-Continental-GT-Right-Front-Three-Quarter-52653_ol.jpg?t=103926897&t=103926897&q=100"},
+    {"nimi": "Nissan", "hind": 15000, "aktiivne": false, "pilt": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hdwallpapers.in%2Fdownload%2Fnissan_qashqai_premiere_edition_2021_4k_hd_cars-HD.jpg&f=1&nofb=1&ipt=0fc798cdbb03eb8fadf06caff0c5386687b1fcc2cd44c1fe94d3b505763bdceb&ipo=images"},
+    {"nimi": "Toyota", "hind": 45000, "aktiivne": true, "pilt": "https://rare-gallery.com/uploads/posts/853471-2018-Hilux-GR-Sport-Double-Cab-Latam-Toyota-White-background.jpg"},
+    {"nimi": "Audi", "hind": 65000, "aktiivne": true, "pilt": "https://www.pngmart.com/files/22/Audi-RS6-PNG-Free-Download.png"},
+    {"nimi": "Nio", "hind": 85000, "aktiivne": false, "pilt": "https://www.nio.com/cdn-static/mynio/nextjs/images/ec6/rotator/vehicle-body-white-00.png"},
+    {"nimi": "KIA", "hind": 35000, "aktiivne": true, "pilt": "https://dealerimages.dealereprocess.com/image/upload/c_limit,f_auto,fl_lossy,w_auto/v1/svp/dep/23kiasportageex/kia_23sportageex_angularfront_glacialwhitepearl"}
 
     
 ]

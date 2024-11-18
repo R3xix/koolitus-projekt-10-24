@@ -32,6 +32,14 @@ function Menyy() {
       <Link to="/kalkulaator">
         <button className="nupp">Kalkulaator</button>
         <br /><br />
+        <Link to="/tagasiside">
+        <button className="nupp">Anna meile tagasisidet</button>
+        
+      </Link>
+      <Link to="/kaart">
+        <button className="nupp">Kaart</button>
+        
+      </Link>
       </Link>
       <Link to="/hinnad">
         <button className="nupp">Hinnad</button>
@@ -75,6 +83,7 @@ function Menyy() {
       <Link to="/halda-kasutajad">
         <button className="nupp">Halda kasutajad</button>
       </Link>
+
 
 
 

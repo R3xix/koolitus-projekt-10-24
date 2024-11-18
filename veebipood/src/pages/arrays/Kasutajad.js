@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import kasutajadJSON from "../../data/kasutajad.json"
+import { Link } from "react-router-dom"
 
 function Kasutajad() {
   const [kasutajad, muudaKasutajad] = useState(kasutajadJSON.slice());
@@ -81,7 +82,11 @@ function Kasutajad() {
       
       <br />
       {kasutajad.map((kasutaja, index) => <div key={index}>{kasutaja.email}
-         - {kasutaja.parool} - {kasutaja.aasta} </div>)}
+         - {kasutaja.parool} - {kasutaja.aasta} 
+       <Link to={"/kasutaja/" + index}>
+            <button>Vt autot lähemalt</button>
+       </Link>
+       </div>)}
 
       {/* {hinnad.map((hind, index) => <div key={index}>{hind}</div>
        )}  */}

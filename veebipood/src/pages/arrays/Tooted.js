@@ -1,54 +1,65 @@
 import React, { useRef, useState } from 'react'
 import tootedJSON from "../../data/tooted.json"
+import { Link } from "react-router-dom"
+import ostukorvFailist from "../../data/ostukorv.json"
+import { ToastContainer, toast } from 'react-toastify';
+import { Button, TextField } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+
 
 function Tooted() {
 
   // "nimi": 
-
-      const [tooted, muudaTooted] = useState(tootedJSON)
+      const { t } = useTranslation();
+      const [tooted, muudaTooted] = useState(tootedJSON.slice())
+      const otsingRef = useRef();
       const sorteeriAZ = ( ) => {
-        tooted.sort((a, b) => a.localeCompare(b, "et"));
+        tooted.sort((a, b) => a.nimi.localeCompare(b.nimi, "et"));
         muudaTooted(tooted.slice());
       }
       const sorteeriZA = ( ) => {
-          tooted.sort((a, b) => b.localeCompare(a, "et"));
+          tooted.sort((a, b) => b.nimi.localeCompare(a.nimi, "et"));
           muudaTooted(tooted.slice());
       }
       const sorteeriTahemargidKasv = ( ) => {
-          tooted.sort((a, b) =>  a.length - b.length);
+          tooted.sort((a, b) =>  a.nimi.length - b.nimi.length);
           muudaTooted(tooted.slice());
       }
       const sorteeriTahemargidKah = ( ) => {
-          tooted.sort((a, b) => b.length - a.length);
+          tooted.sort((a, b) => b.nimi.length - a.nimi.length);
           muudaTooted(tooted.slice());
       }
       const tühjenda = ( ) => { 
-        muudaTooted(tootedJSON)
+        muudaTooted(tootedJSON.slice())
       }
       const FiltreeriBgaAlg = ( ) => {
-        const vastus = tooted.filter(toode => toode.startsWith("B"));
+        const vastus = tooted.filter(toode => toode.nimi.startsWith("B"));
         muudaTooted(vastus);
       }
     
       const FiltreeriNgaAlg = ( ) => {
-        const vastus = tooted.filter(toode => toode.startsWith("N"));
+        const vastus = tooted.filter(toode => toode.nimi.startsWith("N"));
         muudaTooted(vastus);
       }
     
       const FiltreeriTgaAlg = ( ) => {
-        const vastus = tooted.filter(toode => toode.startsWith("T"));
+        const vastus = tooted.filter(toode => toode.nimi.startsWith("T"));
         muudaTooted(vastus);
       }
-      const otsingRef = useRef();
 
       const otsi = ( ) => {
-        const vastus = tootedJSON.filter(toode => toode.includes(otsingRef.current.value) );
+        const vastus = tootedJSON.filter(toode => toode.nimi.toLocaleLowerCase().includes(otsingRef.current.value.toLocaleLowerCase()) );
         muudaTooted(vastus);
       }
+      
       const arvutaKokku = ( ) => {
         let summa = 0;
-        tooted.forEach(toode => summa = toode.match)
+        tooted.forEach(toode => summa = summa + toode.nimi.length)
         return summa;
+      }
+      function lisaOstukorvi(toode) {
+        ostukorvFailist.push(toode);
+        toast.success("Toode edukalt lisatud");
       }
   // Sorteeri
 // 1. A-Z
@@ -64,23 +75,46 @@ function Tooted() {
 
   return (
     <div>
-       <input onChange={otsi} ref={otsingRef} type="text" />
-       <div>Tähed kokku: {arvutaKokku()}</div>
-      {tooted.map((toode, index) =>  <div key={index} >{toode}</div> )}
+      {/* <h1>{t('Welcome to React')}</h1> */}
+      <br />
+       <div> Otsi:<TextField label="Otsi"  onChange={otsi} inputRef={otsingRef} type="text" /></div><br />
+       
+       <div> Tähed kokku: {arvutaKokku()}</div>
+       <br />
+      {tooted.map((toode, index) =>
+          <div key={index}>
+            <img className="toote-pilt" src= {toode.pilt} alt="" />
+            <div>{toode.nimi} </div>
+            <div>{toode.hind} </div>
+            
+            {/* {toode.aktiivne && <button onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi</button> } */}
+            
+            <Button variant="contained" disabled={toode.aktiivne === false} onClick={() => lisaOstukorvi(toode) }> Lisa ostukorvi</Button>
+             
+             <Link to={"/toode/" + index}>
+             <Button variant="outlined">Vt lähemalt</Button>
+             </Link>
+           </div> )}
 
-      <span>Sorteeri: </span>
-      <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
-      <button onClick={sorteeriZA}>Sorteeri Z-A</button>
-      <button onClick={sorteeriTahemargidKasv}>Sorteeri tähemärkide arv kasvavalt</button>
-      <button onClick={sorteeriTahemargidKah}>Sorteeri tähemärkide arv kahanevalt</button><br /><br />
+      <span>{t("sort-header")} </span>
+      <Button onClick={sorteeriAZ}>{t("sort-az")}</Button>
+      <Button onClick={sorteeriZA}>{t("sort-za")}</Button>
+      <Button onClick={sorteeriTahemargidKasv}>Sorteeri tähemärkide arv kasvavalt</Button>
+      <Button onClick={sorteeriTahemargidKah}>Sorteeri tähemärkide arv kahanevalt</Button><br /><br />
       <br />
       <span>Filtreeri: </span>
-      <button onClick={FiltreeriBgaAlg}>B tähega algavad</button>
-      <button onClick={FiltreeriNgaAlg}>N tähega algavad</button>
-      <button onClick={FiltreeriTgaAlg}>T tähega algavad</button>
+      <Button onClick={FiltreeriBgaAlg}>B tähega algavad</Button>
+      <Button onClick={FiltreeriNgaAlg}>N tähega algavad</Button>
+      <Button onClick={FiltreeriTgaAlg}>T tähega algavad</Button>
 
       <br />
-      <button onClick={tühjenda}>Tühjenda</button>
+      <Button onClick={tühjenda}>Tühjenda filtrid</Button>
+      <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+           
+            theme="dark"
+             />
     </div>
   )
 }

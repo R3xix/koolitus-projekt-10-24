@@ -1,10 +1,13 @@
 [
-    "Kai",
-    "Mihkel",
-    "Reimo",
-    "Leo",
-    "Marinel",
-    "Toomas",
-    "Raido",
-    "Annika"
+    
+    {"eesnimi": "Kai", "ametikoht": "Juhataja", "tel": "234674587"},
+    {"eesnimi": "Mihkel", "ametikoht": "Boss", "tel": "21454614"},
+    {"eesnimi": "Reimo", "ametikoht": "Juhatuse esimees", "tel": "6857346"},
+    {"eesnimi": "Leo", "ametikoht": "Masinist", "tel": "346367457"},
+    {"eesnimi": "Marinel", "ametikoht": "Sekretär", "tel": "45747475"},
+    {"eesnimi": "Toomas", "ametikoht": "Brigadir", "tel": "427458568"},
+    {"eesnimi": "Raido", "ametikoht": "Traktorist", "tel": "96777346"},
+    {"eesnimi": "Annika", "ametikoht": "Magager", "tel": "68568484"}
+
+   
 ]

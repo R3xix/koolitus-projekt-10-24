@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import esindusedJSON from "../../data/esindused.json"
+import { Link } from 'react-router-dom'
 
 
 function HaldaEsindused() {
@@ -89,6 +90,7 @@ function HaldaEsindused() {
                     <th>Telefon</th>
                     <th>Aadress</th>
                     <th>Kustuta</th>
+                    <th>Muuda</th>
                 </tr>
   
             </thead>
@@ -103,6 +105,10 @@ function HaldaEsindused() {
                     <td> {esindus.tel}</td>
                     <td> {esindus.aadress}</td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
+                    <td>
+                        <Link to={"/muuda-esindus/" + index}>
+                        <button>Muuda</button>
+                         </Link></td>
             
                 
                 </tr>)}

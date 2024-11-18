@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import hinnadJSON from "../../data/hinnad.json";
+import { Link } from 'react-router-dom'
 
 function HaldaHinnad() {
     const [hinnad, muudaHinnad] = useState(hinnadJSON);
@@ -47,6 +48,11 @@ function HaldaHinnad() {
                     <td>{hind.number}</td>
                     <td>{hind.lisaja}</td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
+                    <td>
+                <Link to={"/muuda-hind/" + index}>
+                <button>Muuda</button>
+                </Link>
+                </td>
                 </tr> )}
             </tbody>
         </table>

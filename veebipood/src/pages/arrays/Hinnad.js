@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import hinnadFailist from "../../data/hinnad.json"; 
+import { Link } from "react-router-dom"
 
 // ./   ---samas kaustas
 // ../---kausta võrra ülevalpool
@@ -78,7 +79,13 @@ function Hinnad() {
         <button onClick={filtreeriVäiksemKui50}>Filtreeri väiksem kui 50</button>
         <button onClick={filtreeriSuuremKui100}>Filtreeri suurem kui 100</button>
         
-       {hinnad.map((hind, index) => <div key={index}>{hind.number}</div>
+       {hinnad.map((hind, index) => 
+       <div key={index}>
+        {hind.number} 
+       <Link to={"/hind/" + index}>
+            <button>Vt  lähemalt</button>
+       </Link>
+       </div>
        )} 
         
     </div>

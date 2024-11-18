@@ -48,12 +48,15 @@ function Autod() {
 
         <button onClick={filtreeriBTahegaAlgavad}>B tähega algavad</button>
 
-        <div>{arvutaKokku()}</div>
-        <br /><br />
-        <input onChange={otsi} ref={otsiRef} type="text" />
+        <div>HInnad kokku €: {arvutaKokku()}</div>
+        <br />
+        <div> Otsi: <input onChange={otsi} ref={otsiRef} type="text" /></div><br />
         {autod.map((auto, index) => 
         <div key={index}>
-            {auto.nimi} - {auto.hind}€ 
+            <img className="toote-pilt" src= {auto.pilt} alt="" />
+            <div>{auto.nimi} </div>
+            <div>{auto.hind}€  </div>
+            {auto.aktiivne} 
             <button onClick={() => lisaOstukorvi(auto)}>Lisa ostukorvi</button>
             <Link to={"/auto/" + index}>
             <button>Vt autot lähemalt</button>

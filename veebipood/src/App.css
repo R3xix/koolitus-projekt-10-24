@@ -98,3 +98,22 @@ th, td {
 th {
   background-color: lightgray;
 }
+.toote-pilt {
+  height: 100px;
+  width: 180px;
+}
+.aktiivne {
+background-color: rgb(207, 225, 207);
+}
+.mitteaktiivne {
+  background-color: rgb(210, 185, 185);
+}
+.lang {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+
+}
+.lang:active {
+  padding: 1px;
+}
