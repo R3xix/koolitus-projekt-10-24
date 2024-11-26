@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+}
+
+
+.nupp {
+  width: 100px;
+  height: 50x;
+  margin: 5px;
+  background-color: rgb(237, 227, 227);
+  
+
+}
+.nupp:active {
+  padding: 1px;
+}
+
+table {
+  margin: auto;
+  
+}
+th, td {
+  border-width: 1px;
+
+  border-style: solid;
+}
+th {
+  background-color: lightgray;
+}
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 100%;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+.active {
+  background-color: rgb(153, 181, 153);
+}
+.inactive {
+ background-color: rgb(174, 106, 106);
+}

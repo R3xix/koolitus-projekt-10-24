@@ -5,6 +5,8 @@ import Avaleht from "./pages/Avaleht" ;
 import Kontakt from "./pages/Kontakt" ;
 import Uudised from "./pages/Uudised" ;
 import Meist from "./pages/Meist" ;
+import KasutajaPostitus from './pages/KasutajaPostitus';
+import YksPostitus from './pages/YksPostitus';
 
 
 
@@ -12,11 +14,7 @@ function App() {
   return (
     <div>
 
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmy.alfred.edu%2Fzoom%2F_images%2Ffoster-lake.jpg&f=1&nofb=1&ipt=897de9c1b93ba1ad9e4042dff63936e53885254b248337c942c26ce239d1390a&ipo=images" alt="loodus" width="1260" height="345"/>
-       <h1>Nature calling</h1>
-       <br />
-       Relax and enjoy your journey!
-       <br /><br /><br />
+      
       <Link to="/"> 
       <button>Avaleht</button>      
       </Link>
@@ -33,11 +31,12 @@ function App() {
 
     
       <Routes>
-        <Route path="element" element={ <Avaleht /> } />
+        <Route path="" element={ <Avaleht /> } />
         <Route path="uudised" element={ <Uudised /> } />
         <Route path="kontakt" element={ <Kontakt /> } />
         <Route path="meist" element={ <Meist /> } />
-        
+        <Route path="kasutaja-postitus/:kasutajaId" element={ <KasutajaPostitus /> } />
+        <Route path="vaata-postitus/:postituseId" element={ <YksPostitus /> } />
       </Routes>
      
     </div>
