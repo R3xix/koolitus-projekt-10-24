@@ -1,29 +1,37 @@
-import React, {useRef, useState } from 'react'
-import productsJSON from "../../data/products.json"
+import React, {useEffect, useRef, useState } from 'react'
+// import productsJSON from "../../data/products.json"
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 
 function MaintainProducts() {
-    const [products, setProducts] = useState(productsJSON.slice());
+    // const [products, setProducts] = useState(productsJSON.slice());
     const productRef = useRef();
     const priceRef = useRef();  
     const pictureRef = useRef(); 
     const findRef = useRef(); 
     
 
-    
+    const [products, setProducts] = useState([]);
+    const productUrl = "https://webshopper1024-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+    fetch(productUrl)
+    .then(res => res.json())
+    .then(json  => setProducts(json || [ ]) ) //
+}, []);
     
     const erase = (index) => {
         products.splice(index, 1);
         setProducts(products.slice());
         toast.error("Product deleted")
+        
     }
     const empty = ( ) => { 
-        setProducts(productsJSON.slice());
+        setProducts(products.slice());
     }
     const find = ( ) => {
         
-        const res = productsJSON.filter(product => 
+        const res = products.filter(product => 
             product.title.toLocaleLowerCase().includes(findRef.current.value.toLocaleLowerCase())
         );
         setProducts(res);
@@ -48,32 +56,38 @@ function MaintainProducts() {
        <table>
             <thead>
                 <tr>  
-                    <th>Image</th>
+                    <th>ID</th>
                     <th>Title</th>
                     <th>Price</th>
+                    <th>Description</th>
                     <th>Category</th>
+                    <th>Image</th>
                     <th>Stock</th>
-                    <th>Rate</th>
-                    <th>Rate count</th> 
-                    <th>Delete</th>
-                    <th>Change</th>
+                    <th>Active</th>
+                    <th>Rating</th> 
+                    <th>Rating count</th>
+                   
                 </tr>
             </thead>
             <tbody>
                {products.map((product, index) => 
-                <tr key={product.id} className={product.active ? "active"  :  "inactive"}>
+                <tr key={product.id} className={product.active ? "bsactive"  :  "inactive"}>
                     <td><img style={{width:"100px"}} src={product.image} alt="" /></td>
+                    <td>{product.id}</td>
                     <td>{product.title}</td>
                     <td>{product.price}</td>
+                    <td>{product.description}</td>
                     <td>{product.category}</td>
+                    <td>{product.image}</td>
                     <td>{product.stock}</td>
+                    <td>{product.active}</td>
                     <td>{product.rating.rate}</td>
                     <td>{product.rating.count}</td>
                    
                     <td><button onClick={() => erase(index)}>x</button></td>
                     <td>
                 <Link to={"/edit-products/" + index}>
-                <button>Change</button>
+                <button>Edit</button>
                 </Link>
                 </td>
                 </tr> )}

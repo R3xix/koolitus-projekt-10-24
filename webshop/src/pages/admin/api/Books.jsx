@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import ParcelMachines from '../../../components/cart/ParcelMachines';
 
 
 function Books() {
@@ -29,7 +30,7 @@ function Books() {
   return (
     <div>
         {/* <div>{searchTerm}</div> */}
-
+        <ParcelMachines/>
         <input onChange={changeSearchTerm} ref={searchRef} type="text" />
          <table>
             <thead>

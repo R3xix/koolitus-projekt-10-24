@@ -5,7 +5,7 @@
 
 .nupp {
   width: 100px;
-  height: 50x;
+  height: 50px;
   margin: 5px;
   background-color: rgb(237, 227, 227);
   
@@ -90,9 +90,48 @@ h2 {
   color: #333;
   margin-bottom: 20px;
 }
-.active {
-  background-color: rgb(153, 181, 153);
+.bsactive {
+  background-color: rgb(172, 192, 172);
 }
 .inactive {
  background-color: rgb(174, 106, 106);
 }
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px; /* Fikseeritud laius */
+  height: 400px; /* Fikseeritud kõrgus */
+  background-color: #f8f9fa; /* Lisatud taust, et suurus oleks alati nähtav */
+  overflow: hidden; /* Väldi üleliigset sisu */
+  border-radius: 10px; /* Lisatud ümarad nurgad */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Lisatud vari */
+}
+
+.carousel-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image {
+  max-width: 300px; 
+  max-height: 300px; 
+  object-fit: contain; 
+}
+
+.carousel-text {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+}
+

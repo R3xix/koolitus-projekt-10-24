@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Payment from '../../../components/cart/Payment';
 
 // tarnija -ke s mulle kaupa müüb
 // tarnija hindu meie ei saagi muuta
@@ -19,6 +20,8 @@ function Supplier() {
     // 7x th 7x td
   return (
     <div>
+
+       <Payment sum={1000}/>
         <table>
             <thead>
                 <tr>

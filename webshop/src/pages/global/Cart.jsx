@@ -1,27 +1,31 @@
 import React, { useState } from 'react'  // node module
 import { Link } from 'react-router-dom' // node module
-import cartJSON from "../../data/cart.json" // meie fail
+// import cartJSON from "../../data/cart.json" // meie fail
 import Button from '@mui/material/Button'; // node module
 import ParcelMachines from '../../components/cart/ParcelMachines';
 import Payment from '../../components/cart/Payment';
+import "../../css/Cart.css"; // leiandit ei pea panema .js failidele
+// ülejäänutele peab kirjutama faili laiendi lõppu .json . css  . svg  .png
 
 function Cart() {
-        const [products, setProducts] = useState(cartJSON.slice());
+        const [products, setProducts] = useState(JSON.parse(localStorage.getItem("cart"))|| [] ) ;
       
          function eraseByOne (index) {
-            cartJSON.splice(index, 1);
-            setProducts(cartJSON.slice());
+          products.splice(index, 1);
+            setProducts(products.slice());
+            localStorage.setItem("cart", JSON.stringify(products));
       
          }
          function emptyCart () {
-            cartJSON.splice(0); 
-            setProducts(cartJSON.slice());
+          products.splice(0); 
+            setProducts(products.slice()); // htmli uuendamiseks
+            localStorage.setItem("cart", JSON.stringify(products)); // salvestamiseks
       
          }
          const sumPrice = ( ) => {
           let sum = 0;
           products.forEach(product => sum = sum + product.price);
-          return sum.toFixed(2);
+          return sum;
          }
         //  const sumPcs = ( ) => {
         //     let sum = 0;
@@ -39,13 +43,17 @@ function Cart() {
         </>}
       
       {products.map(product => 
-      <div key={product.id}>
-        <img  src={product.image} style= {{"width": "50px"}} alt="" />
-           
-            <div>{product.title}</div>
-            
-      
-        <Button variant="outlined" onClick={() =>eraseByOne(product)}>x</Button>
+      <div className="product" key={product.id}>
+        <span className="product-left">
+        <img  className="image" src={product.image}  alt="" />
+            <div className="title">{product.title}</div>
+            </span>
+            <span className="product-right">
+            <div className="price">{product.price.toFixed(2)}€</div>
+            </span>
+       
+
+        <Button className="button" variant="outlined" onClick={() =>eraseByOne(product)}>x</Button>
       </div>
     
     )}
@@ -58,10 +66,10 @@ function Cart() {
       
       {products.length > 0 && 
       <>
-      <div>Total price €: {sumPrice()} €</div><br />
+      <div>Total price €: {sumPrice().toFixed(2)} €</div><br />
       
       <ParcelMachines/>
-      <Payment/>
+      <Payment sum={sumPrice().toFixed(2)}/>
       </>}
     </div>
   )

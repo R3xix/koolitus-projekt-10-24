@@ -1,20 +1,52 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import productsFromFile from "../../data/products.json"
-import cartJSON from "../../data/cart.json"
+// import productsFromFile from "../../data/products.json"
+// import cartJSON from "../../data/cart.json"
 import Dropdown from 'react-bootstrap/Dropdown';
 import { ToastContainer, toast } from 'react-toastify';
 import Button from '@mui/material/Button';
+import Carousel from 'react-bootstrap/Carousel';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function HomePage() {
-    const [products, setProducts] = useState(productsFromFile.slice());
+    // const [products, setProducts] = useState(productsFromFile.slice());
+    const [categories, setCategories] = useState([]);
+    const categoryUrl = "https://webshopper1024-default-rtdb.europe-west1.firebasedatabase.app/categories.json"
+
     const findRef = useRef(); 
+
+    const [products, setProducts] = useState([]);
+    const productUrl = "https://webshopper1024-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+    fetch(productUrl)
+    .then(res => res.json())
+    .then(json  => setProducts(json || [ ]) ) //
+     }, []);
+
+     useEffect(() => {
+      fetch(categoryUrl)
+     .then(res => res.json())
+     .then(json  => setCategories(json || [ ]) ) //
+     }, []);
+
     
     
     function addToCart(product) {
-        cartJSON.push(product);
+        // cartJSON.push(product);
+        const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
+        cartLS.push(product);
+        localStorage.setItem("cart", JSON.stringify(cartLS));
         toast.success("Product added successfully!");
+
+        // LocalStorage - sse ARRAY lisamiseks
+        // 1. Võtta localStoragest: localStorage.getItem
+        // 2. võtta jutumargid maha: JSON.parse()
+        // 3. pushida lisatule juurde
+        // 4. panna jutumärgid tagasi: JSON.stringify()
+        // 5. panna localStoragesse tagasi: localStorage.setItems
       }
+
       const sortAZ = ( ) => {
         products.sort((a, b) => a.title.localeCompare(b.title, "en"));
         setProducts(products.slice());
@@ -40,20 +72,52 @@ function HomePage() {
           setProducts(products.slice());
       }
       const clear = ( ) => { 
-        setProducts(productsFromFile.slice())
+        setProducts(products.slice())
       }
-      const filterCategory = ( ) => {
-        const vastus = products.filter(product => product.category.valueOf("men's clothing"));
-        setProducts(vastus);
+      const filterCategory = (categoryClicked ) => {
+        const result = products.filter(product => product.category === categoryClicked);
+        setProducts(result);
       }
-      
         const find = ( ) => {
-        const answer = productsFromFile.filter(product => product.title.toLocaleLowerCase().includes(findRef.current.value.toLocaleLowerCase()) );
+        const answer = products.filter(product => product.title.toLocaleLowerCase().includes(findRef.current.value.toLocaleLowerCase()) );
         setProducts(answer);
       }
+
+        // // Fetch data from JSON
+        // useEffect(() => {
+        //   fetch("https://fakestoreapi.com/products") // Replace with your JSON endpoint
+        //     .then((response) => response.json())
+        //     .then((data) => setProducts(data))
+        //     .catch((error) => console.error("Error fetching data:", error));
+        // }, []);
      
   return (
     <div>
+      
+      <div className="carousel-container">
+      <Carousel data-bs-theme="dark">
+        {products.map((product) => (
+          <Carousel.Item key={product.id}>
+            <div className="carousel-slide">
+              <div className="carousel-image-container">
+                <img
+                  className="carousel-image"
+                  src={product.image}
+                  alt={product.title}
+                />
+              </div>
+              {/* Text on the right */}
+              <div className="carousel-text">
+                <h5>{product.title}</h5>
+              </div>
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+        </div>
+        <br /><br />
+       
+       <div>
 
         <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -74,10 +138,15 @@ function HomePage() {
                 Filtreeri 
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                <Dropdown.Item onClick={filterCategory}>Category</Dropdown.Item>
+            <Dropdown.Menu title="Filter: " id="custom-navbar-sort">
+
+              {categories.map(category => 
+                <Dropdown.Item onClick={()=> filterCategory(category)} key={category}> {category} </Dropdown.Item>
+              )}
+
+                {/* <Dropdown.Item onClick={filterCategory}>Category</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
              </Dropdown.Menu>
         </Dropdown><br /><br />
 
@@ -90,7 +159,7 @@ function HomePage() {
         {products
           .filter(product => product.active === true )
         .map(product =>
-        <div key={product.id}>
+        <div key={product.id} >
             <img style={{width:"100px"}} src={product.image} alt="" />
             
             <div>{product.title}</div>
@@ -105,7 +174,8 @@ function HomePage() {
              </Link>
         </div>
          )}
-          <ToastContainer />
+        <ToastContainer />
+    </div>
     </div>
   )
 }

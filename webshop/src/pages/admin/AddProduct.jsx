@@ -1,5 +1,5 @@
-import React, {useRef } from 'react'
-import productsFromFile from "../../data/products.json"
+import React, {useEffect, useRef, useState } from 'react'
+// import productsFromFile from "../../data/products.json"
 import { ToastContainer, toast } from 'react-toastify';
 
 function AddProduct() {
@@ -11,32 +11,63 @@ function AddProduct() {
     const descriptionRef = useRef();
     const categoryRef = useRef(); 
     const imageRef = useRef(); 
-    const ratingRef = useRef(); 
+    const stockRef = useRef();
+    const activeRef = useRef();  
+    const rateRef = useRef(); 
+    const countRef = useRef(); 
+
+    const [products, setProducts] = useState([]);
+    const productUrl = "https://webshopper1024-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+
+    useEffect(() => {
+    fetch(productUrl)
+    .then(res => res.json())
+    .then(json  => setProducts(json || [ ]) ) //
+}, []);
     
 // products???
 // kui lisada siis refreshiga kustub ära ei salvesta
 
     
-    const add = (index) => {
-        productsFromFile.push(
-            {"id":idRef.current.value,"title":titleRef.current.value, "price":priceRef.current.value, "description": descriptionRef.current.value, 
-                "category": categoryRef.current.value, "image": imageRef.current.value, "rating": ratingRef.current.value }
+    const add = () => {
+        products.push(
+            {
+                "id": idRef.current.value,
+                "title": titleRef.current.value,
+                "price": Number(priceRef.current.value),
+                "description": descriptionRef.current.value,
+                "category": categoryRef.current.value,
+                "image": imageRef.current.value, 
+                "stock": Number(stockRef.current.value), 
+                "active": activeRef.current.checked, 
+                "rating": {
+                   "rate": Number(rateRef.current.value),
+                   "count": Number(countRef.current.value)
+                }
+            }
         );
        
         idRef.current.value = "";
         toast.success("Product added!");
+        fetch(productUrl, {method:"PUT", body: JSON.stringify(products)});
+        // õige arendus: saadame toote back-endi, et back-end paneks andmebaasi
     }
+    
+
   return (
     <div>
-        <label >New ID: <input ref={idRef}type="text" /></label>
+        <label >New ID: <input ref={idRef}type="number" /></label>
         <br />
         <label>New product title: <input ref={titleRef }type="text" /></label>
          <br />
-        <label>New price: <input ref={priceRef }type="text" /></label><br />
+        <label>New price: <input ref={priceRef }type="number" /></label><br />
         <label>Description: <input ref={descriptionRef }type="text" /></label><br />
         <label>Category <input ref={categoryRef }type="text" /></label><br />
         <label>New picture: <input ref={imageRef }type="text" /></label><br />
-        <label>Kategooria <input ref={ratingRef }type="text" /></label><br />
+        <label>Stock: <input ref={stockRef }type="number" /></label><br />
+        <label>Active: <input ref={activeRef}type="checkbox" /></label><br />
+        <label>Rate <input ref={rateRef }type="number" /></label><br />
+        <label>Count <input ref={countRef }type="number" /></label><br />
         <button onClick={add}>Sisesta</button><br /><br />
         <ToastContainer />
     </div>

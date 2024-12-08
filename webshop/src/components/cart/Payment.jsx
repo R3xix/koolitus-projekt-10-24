@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Payment() {
+function Payment(props) {
     function pay() {
         const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff" ;
         const paymentBody = {
             "account_name": "EUR3D1", // konto
             "nonce": "165asd1" + new Date() + Math.random() * 9999999,
             "timestamp": new Date(),
-            "amount": 105.99, // TODO:
+            "amount": props.sum, // TODO:
             "order_reference": Math.random() * 9999999,
             "customer_url": "https://webshopper1024.web.app/", // TODO: FIREBASE PÄRIS AADRESS
             "api_username": "92ddcfab96e34a5f"

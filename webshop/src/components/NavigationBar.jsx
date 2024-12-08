@@ -12,7 +12,7 @@ function NavigationBar() {
 
           
      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
-        <Container>
+          <Container>
             <Navbar.Brand as={Link} to="/">Webshopper</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -21,30 +21,21 @@ function NavigationBar() {
                     <Nav.Link as={Link} to="/contact">Contacts</Nav.Link>
                     <Nav.Link as={Link} to="/shops">Shops</Nav.Link>
                     <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
-                    <Nav.Link as={Link} to="/map">Map</Nav.Link>
-                    
 
                 <NavDropdown title="admin" id="collapsible-nav-dropdown">
                     <NavDropdown.Item as={Link} to="admin">Admin home</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="admin/add-product">Add products</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="admin/maintain-products">Maintain products</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="admin/maintain-categories">Maintain categories</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="admin/maintain-shops">Maintain shops</NavDropdown.Item>
-                    
+                    <NavDropdown.Item as={Link} to="admin/maintain-shops">Maintain shops</NavDropdown.Item>               
                 </NavDropdown>
-            
-        
+      
                 <Nav.Link as={Link} to="login">Login </Nav.Link>
                 <Nav.Link as={Link} to="signup">Sign Up</Nav.Link>
-            
-            
-         
 
-         
-           
              </Nav>
             </Navbar.Collapse>
-        </Container>
+          </Container>
     </Navbar>
 
 

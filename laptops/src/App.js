@@ -5,6 +5,7 @@ import Avaleht from './pages/Avaleht';
 import LisaArvuti from './pages/LisaArvuti';
 import VaataArvuteid from './pages/VaataArvuteid';
 import Tooted from './pages/Tooted';
+import Ostukorv from './pages/Ostukorv';
 
 function App() {
   return (
@@ -22,12 +23,16 @@ function App() {
       <Link to="/products">
         <button>Vaata tooteid</button>
       </Link>
+      <Link to="/cart">
+        <button>Ostukorv</button>
+      </Link>
 
       <Routes>
         <Route path='/' element={<Avaleht/>}></Route>
         <Route path='all' element={ <VaataArvuteid/>}></Route>
         <Route path='add' element={ <LisaArvuti/>}></Route>
         <Route path='products' element={ <Tooted/>}></Route>
+        <Route path='cart' element={ <Ostukorv/>}></Route>
 
       </Routes>
       

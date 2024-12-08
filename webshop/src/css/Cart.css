@@ -1,0 +1,79 @@
+.product {
+   display: flex; /*vasakult paremale */
+   justify-content: space-between; /*vabaruumi paigutamine */
+   margin: 0 10%; /*vasakult paremale */
+   border-bottom: 1px  solid lightgray; /*joon alla */
+   padding: 10px 0;
+}
+
+
+.image {
+  width: 40px;
+  height: 40px;
+}
+.title {
+ width: 200px;
+ text-align: left;
+ font-weight: bold;
+ align-items: center;
+ font-size: 12px;
+ display: grid;
+
+}
+.price {
+  width: 80px;
+  font-size: 12px;
+  display: grid;
+  align-items: center;
+}
+.button {
+   min-width: 30px !important;
+   height: 20px !important;
+   padding: 0 !important;
+}
+.product-left {
+display: flex;
+justify-content: space-between;
+width: 500px;
+}
+.product-right {
+   display: flex;
+justify-content: space-between;
+width: 200px;
+
+}
+
+@media only screen and (max-width: 1023px) {
+   body {
+      background-color: white
+   };
+
+
+}
+
+
+@media only screen and (max-width: 600px) {
+   select {
+      width: 300px;
+   }
+   .product-left {
+      display: block;
+      text-align: left;
+   }
+   .product-right {
+      display: block;
+      text-align: right;
+   
+   
+   }
+   .price {
+    min-width: 130px;
+   }
+
+
+   
+  
+   /* body {
+     background-color: lightblue;
+   } */
+ }
