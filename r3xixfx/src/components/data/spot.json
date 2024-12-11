@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "logo":"https://ih1.redbubble.net/image.3028008112.3050/raf,360x360,075,t,fafafa:ca443f4786.u4.jpg",
+        "symbol": "SHIBUSD",
+        "date": "05.12.2024",
+        "time": "13.39",
+        "tokens": 22200000000,
+        "price": 0.0000000043,
+        "currentprice": "",
+        "profitloss": "",
+        "information": ""
+        
+    },
+    {
+        "id": 2,
+        "logo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDwoJaT7YHFYWVOSMbUKo5WhUyUjOcpdYVQA&s",
+        "symbol": "ETHUSD",
+        "date": "06.12.2024",
+        "time": "13.39",
+        "tokens": 2,
+        "price": 3678,
+        "currentprice": "",
+        "profitloss": "",
+        "information": ""
+    },
+    {
+        "id": 3,
+        "logo":"",
+        "symbol": "XRPUSD",
+        "date": "05.11.2024",
+        "time": "13.39",
+        "tokens": 3000,
+        "price": 2.09,
+        "currentprice": "",
+        "profitloss": "",
+        "information": ""
+    },
+    {
+        "id": 4,
+        "logo":"",
+        "symbol": "OCEANUSD",
+        "date": "05.09.2024",
+        "time": "13.39",
+        "tokens": 5000,
+        "price": 0.5,
+        "currentprice": 0.67,
+        "profitloss": "",
+        "information": ""
+    },
+    {
+        "id": 5,
+        "logo":"",
+        "symbol": "VETUSD",
+        "date": "05.12.2023",
+        "time": "13.39",
+        "tokens": 333,
+        "price": 0.089,
+        "currentprice": "",
+        "profitloss": "",
+        "information": ""
+    }
+   
+]

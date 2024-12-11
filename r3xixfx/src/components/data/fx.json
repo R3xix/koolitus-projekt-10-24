@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "strategy": "1min",
+        "position": "short",
+        "symbol": "EURUSD",
+        "date": "23122024" ,
+        "time": 13.39,
+        "volume": 0.05,
+        "openprice": 1.05684,
+        "closeprice": 1.06578,
+        "pips": "",
+        "profitloss": 300,
+        "image": "https://www.tradingview.com/x/l7qpefyC/",
+        "addinfo": "dgsdgas GA r RY ry YR yr Tw4 yY53Y Q5UY Q5Y5"
+
+    },
+    {
+        "id": 2,
+        "strategy": "long",
+        "position": "short",
+        "symbol": "GBPUSD",
+        "date": "24122024" ,
+        "time": 13.39,
+        "volume": 0.07,
+        "openprice": 1.25684,
+        "closeprice": 1.26578,
+        "pips": "",
+        "profitloss": 244,
+        "image": "https://www.tradingview.com/x/fJxmWAEp/",
+        "addinfo": ""
+
+
+    },
+    {
+        "id": 3,
+        "strategy": "long",
+        "position": "short",
+        "symbol": "XAUUSD",
+        "date": "24122024" ,
+        "time": 13.39,
+        "volume": 0.07,
+        "openprice": 1.25684,
+        "closeprice": 1.26578,
+        "pips": "",
+        "profitloss": 666,
+        "image": "https://www.tradingview.com/x/fJxmWAEp/",
+        "addinfo": ""
+
+
+    }
+
+
+]

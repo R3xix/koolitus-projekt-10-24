@@ -1,0 +1,45 @@
+.navbar {
+    background-color: #252525; /* Tume taust */
+    padding: 0;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    margin: 0;
+}
+
+.nav-list a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-list a:hover {
+    background-color: #0078d7; /* Sinine esiletõste */
+}
+
+.nav-list .active {
+    background-color: #0078d7; /* Sinine aktiivne link */
+}
+
+.rss-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+}
+
+.rss-icon::after {
+    content: "🟧"; /* RSS-ikooni sümbol */
+    font-size: 16px;
+    margin-left: 5px;
+}

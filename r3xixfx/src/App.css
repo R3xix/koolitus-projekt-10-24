@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1b1d21;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,164 @@
   to {
     transform: rotate(360deg);
   }
+}
+.card-img-custom {
+  height: 200px; 
+  width: 100%;   
+  object-fit: cover; 
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.table-container {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+thead {
+  background-color: #97a7b7;
+  color: #fff;
+  font-weight: bold;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.2s ease-in-out;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+tbody td {
+  padding: 12px;
+  text-align: left;
+}
+
+td img {
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  border: none;
+  padding: 6px 12px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-edit {
+  background-color: #28a745;
+  border: none;
+  padding: 6px 12px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.btn-edit:hover {
+  background-color: #218838;
+}
+.container {
+  width: 80%;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  
+  
+  border-radius: 8px;
+  
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.button {  
+  padding: 10px 20px;
+  background-color: grey;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  align-self: center;
+}
+
+.button:hover {
+  background-color: #6c91b8;
+}
+.custom-dropdown-toggle {
+  background: none !important; /* Remove background */
+  border: none !important;     /* Remove border */
+  box-shadow: none !important; /* Remove any box shadow */
+  padding: 0;                  /* Adjust padding if necessary */
+}
+.custom-table {
+  width: auto;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: nowrap; /* Takistab teksti murtumist */
+}
+
+.custom-table th {
+  background-color: #f4f4f4;
+  text-align: left;
 }
