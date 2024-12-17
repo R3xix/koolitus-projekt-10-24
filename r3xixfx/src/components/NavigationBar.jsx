@@ -4,6 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Col, Form} from 'react-bootstrap';
+
 
 
 
@@ -12,7 +14,7 @@ function NavigationBar() {
   
   return (
     <div>
-         <Navbar bg="dark" data-bs-theme="dark">
+         <Navbar sticky="top" bg="dark" data-bs-theme="dark" >
           <Container>
           <Navbar.Brand as={Link} to="/">
             <img
@@ -28,20 +30,28 @@ function NavigationBar() {
                     <Nav.Link as={Link} to="">Home page</Nav.Link>
                     <Nav.Link as={Link} to="/spot-page">Crypto portfolio</Nav.Link>
                     <Nav.Link as={Link} to="/fx-trades">FX trades</Nav.Link>
-                    <Nav.Link as={Link} to="/my-strategies">My strategies</Nav.Link>                   
+                    <Nav.Link as={Link} to="/my-strategies">My strategies</Nav.Link>   
+                    <Nav.Link as={Link} to="/best-learning-videos">My videos</Nav.Link>                 
 
                 <NavDropdown title="admin" id="collapsible-nav-dropdown">
-                    <NavDropdown.Item as={Link} to="admin">Admin home</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="admin/add-fxtrade">Add fx trade</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="admin/add-spottrade">Add spot trade</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="admin/add-strategy">Add strategy</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="admin/maintain-spot">Maintain spot</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="admin/maintain-fxtrade">Maintain fx trade</NavDropdown.Item>    
                 </NavDropdown>  
-                <Nav.Link as={Link} to="/about-me">Who am I?</Nav.Link>
              </Nav>
             </Navbar.Collapse>
-            
+            <Form className="d-flex">
+          <Col xs="auto">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className=" searchFilter"
+            />
+          </Col>
+          <Col xs="auto">
+            <Button  style={{ backgroundColor: '#444', color: 'white' }} type="submit">Submit</Button>
+          </Col>
+        
+      </Form>
           </Container>
           
     </Navbar>

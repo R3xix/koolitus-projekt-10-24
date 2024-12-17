@@ -7,8 +7,7 @@ import HomePage from './pages/myPages/HomePage';
 import SpotPage from './pages/myPages/SpotPage';
 import FxTrades from './pages/myPages/FxTrades';
 import CryptoPairDetail from './pages/myPages/CryptoPairDetail';
-import MyStrategies from './pages/myPages/MyStrategies';
-import AboutMe from './pages/myPages/AboutMe';
+import MyStrategies from './pages/myStrategies/MyStrategies';
 import AdminHome from './pages/admin/AdminHome';
 import AddFxTrade from './pages/admin/AddFxTrade';
 import AddSpotTrade from './pages/admin/AddSpotTrade';
@@ -17,10 +16,12 @@ import EditFxTrade from './pages/admin/EditFxTrade';
 import EditSpotTrade from './pages/admin/EditSpotTarde';
 import MaintainSpotTrade from './pages/admin/MaintainSpotTrade';
 import MaintainFxTrade from './pages/admin/MaintainFxTrade';
+import BestLearningVideos from './pages/myPages/BestLerningVideos';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App">´
+    
       <NavigationBar/>
 
       <Routes>
@@ -29,7 +30,9 @@ function App() {
         <Route path='fx-trades' element={<FxTrades/>}></Route>
         <Route path='crypto-pair-det' element={<CryptoPairDetail/>}></Route>
         <Route path='my-strategies' element={<MyStrategies/>}></Route>
-        <Route path='about-me' element={<AboutMe/>}></Route>
+        <Route path='best-learning-videos' element={<BestLearningVideos/>}></Route>
+
+      
 
         <Route path='admin' element={<AdminHome/>}></Route>
         <Route path='admin/add-fxtrade' element={<AddFxTrade/>}></Route>
@@ -39,8 +42,8 @@ function App() {
         <Route path='admin/maintain-spot' element={<MaintainSpotTrade/>}></Route>
         <Route path='admin/maintain-fxtrade' element={<MaintainFxTrade/>}></Route>
 
-        <Route path='admin/edit-fxtrade/:fxIndex' element={<EditFxTrade/>}></Route>
-        <Route path='admin/edit-spottrade/:spotIndex' element={<EditSpotTrade/>}></Route>
+        <Route path='admin/edit-fxtrade/:index' element={<EditFxTrade/>}></Route>
+        <Route path='admin/edit-spottrade/:index' element={<EditSpotTrade/>}></Route>
 
 
       </Routes>

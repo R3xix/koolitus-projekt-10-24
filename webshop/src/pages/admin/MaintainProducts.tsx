@@ -2,16 +2,20 @@ import React, {useEffect, useRef, useState } from 'react'
 // import productsJSON from "../../data/products.json"
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+import styles from "../../css/MaintainProduts.module.css"
+import { Product } from '../../models/Product';
+
+
 
 function MaintainProducts() {
     // const [products, setProducts] = useState(productsJSON.slice());
-    const productRef = useRef();
-    const priceRef = useRef();  
-    const pictureRef = useRef(); 
-    const findRef = useRef(); 
+    const productRef = useRef<HTMLInputElement>(null);
+    const priceRef = useRef<HTMLInputElement>(null);  
+    const pictureRef = useRef<HTMLInputElement>(null); 
+    const findRef = useRef<HTMLInputElement>(null); 
     
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
     const productUrl = "https://webshopper1024-default-rtdb.europe-west1.firebasedatabase.app/products.json"
 
     useEffect(() => {
@@ -20,7 +24,7 @@ function MaintainProducts() {
     .then(json  => setProducts(json || [ ]) ) //
 }, []);
     
-    const erase = (index) => {
+    const erase = (index: number) => {
         products.splice(index, 1);
         setProducts(products.slice());
         toast.error("Product deleted")
@@ -30,9 +34,13 @@ function MaintainProducts() {
         setProducts(products.slice());
     }
     const find = ( ) => {
-        
+        const refCurrent = findRef.current;
+        if (refCurrent === null) {
+            console.log("REF JÄI HTMLI PANEMATA!!!")
+            return;
+        }
         const res = products.filter(product => 
-            product.title.toLocaleLowerCase().includes(findRef.current.value.toLocaleLowerCase())
+            product.title.toLocaleLowerCase().includes(refCurrent.value.toLocaleLowerCase())
         );
         setProducts(res);
     }
@@ -54,7 +62,7 @@ function MaintainProducts() {
        
         <div><button onClick={empty}>Back to original</button></div><br />
        <table>
-            <thead>
+            <thead className={styles.thead}>
                 <tr>  
                     <th>ID</th>
                     <th>Title</th>
@@ -71,7 +79,7 @@ function MaintainProducts() {
             </thead>
             <tbody>
                {products.map((product, index) => 
-                <tr key={product.id} className={product.active ? "bsactive"  :  "inactive"}>
+                <tr key={product.id} className={product.active ? styles.active  :  styles.inactive}>
                     <td><img style={{width:"100px"}} src={product.image} alt="" /></td>
                     <td>{product.id}</td>
                     <td>{product.title}</td>

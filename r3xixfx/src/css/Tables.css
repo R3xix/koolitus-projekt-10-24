@@ -1,0 +1,184 @@
+.custom-table {  /* Fxtrade tabel */
+  
+  border-collapse: collapse;
+  padding: 100px;
+}
+
+
+.custom-table td { /* Fxtrade tabel */
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px;
+}
+
+.custom-table tbody tr { /* Fxtrade tabel */
+  height: 60px;
+}
+
+.custom-table img { /* Fxtrade tabel */
+  border-radius: 2px;
+}
+.filter-arrow { /* Tabeli filtrid */
+  cursor: pointer;
+  margin-right: 5px;
+  color: black;
+  font-size: 14px;
+}
+
+.filter-dropdown {  /* Tabeli filtrid */
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 5px;
+  z-index: 10;
+  width: 150px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-option {  /* Tabeli filtrid */
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-option:hover { /* Tabeli filtrid */
+  background-color: #f0f0f0;
+}
+.expander-content {
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  transform: scale(100%);  
+}
+.expander-content input {
+  text-align: center;
+  height: 30px;
+  width: 150px;
+}
+.btn-save {
+  background-color: #28a745;
+  border: none;
+  padding: 6px 12px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+  
+  
+  
+}
+  
+.expanded-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #ffffff;
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  
+}
+
+/* Tekstiosa stiil */
+.expanded-row__text {
+  flex: 1;
+  font-family: Arial, sans-serif;
+  color: #333;
+  
+}
+
+.expanded-row__text h5 {
+  margin-bottom: 15px;
+  color: #555;
+  text-align: left;
+}
+
+.expanded-row__text p {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+.expanded-row__text strong {
+  color: #000;
+}
+
+/* Pildi stiil */
+.expanded-row__image {
+  margin-left: 20px; /* Vahe tekstiosa ja pildi vahel */
+  border-radius: 5px;
+}
+
+.expanded-row__image img {
+  max-width: 700px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.table-header {
+  background-color:grey;
+  height: 80px;
+  text-align: center;
+  padding: 2rem 5rem;
+}
+.fxtrade-container {
+  padding: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-add-trade {
+  background-color: #1a8d37;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-add-trade:hover {
+  background-color: #218838;
+}
+
+.add-menu {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+
+.custom-table {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-save {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.editbtn-image {
+  cursor: pointer;
+  width: 40px;
+  font-size: 24px; 
+  color: black;
+
+}

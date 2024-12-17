@@ -48,7 +48,7 @@ function Autod() {
 
         <button onClick={filtreeriBTahegaAlgavad}>B tähega algavad</button>
 
-        <div>HInnad kokku €: {arvutaKokku()}</div>
+        <div>Hinnad kokku €: {arvutaKokku()}</div>
         <br />
         <div> Otsi: <input onChange={otsi} ref={otsiRef} type="text" /></div><br />
         {autod.map((auto, index) => 

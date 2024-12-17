@@ -3,12 +3,6 @@
     padding: 0;
 }
 
-.nav-list {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 
 .nav-list li {
     margin: 0;
@@ -30,16 +24,8 @@
 .nav-list .active {
     background-color: #0078d7; /* Sinine aktiivne link */
 }
-
-.rss-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 20px;
-}
-
-.rss-icon::after {
-    content: "🟧"; /* RSS-ikooni sümbol */
-    font-size: 16px;
-    margin-left: 5px;
+.searchFilter {
+    display: block;
+    color: white;
+    font-weight: bold;
 }

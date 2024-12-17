@@ -1,0 +1,9 @@
+.active {
+    background-color: rgb(205, 232, 70);
+  }
+  .inactive {
+   background-color: rgb(174, 106, 106);
+  }
+  thead {
+    background-color: brown;
+  }

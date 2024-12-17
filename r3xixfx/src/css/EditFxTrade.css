@@ -1,0 +1,55 @@
+/* Konteiner Edit vormi jaoks */
+.editfx-expander-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .editfx-label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #495057;
+    font-size: 14px;
+  }
+  
+  .editfx-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .editfx-input:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+  }
+  
+  .editfx-button-save {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editfx-button-save:hover {
+    background-color: #218838;
+  }
+  
+  /* Lisab pehmendust, kui Expand avatud */
+  .editfx-expanded-row {
+    border-top: 2px solid #ddd;
+  }

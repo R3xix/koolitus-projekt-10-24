@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import fxJSON from '../../components/data/fx.json';
-import NavigationBar from '../../components/NavigationBar';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
+import '../../css/EditFxTrade.css';
 
 function EditFxTrade() {
-  const [fxs, setFxs] = useState([]); // Seisund JSON-i jaoks
-  const { fxIndex } = useParams(); // URL parameetri hankimine
-  const fxsLS = JSON.parse(localStorage.getItem("fxTrades")) || [] ;
+  const [fxtrade, setFxTrade] = useState([]); // Seisund JSON-i jaoks
+  const fxtradeUrl="https://r3xix-fx-default-rtdb.europe-west1.firebasedatabase.app/fxtrades.json"
+  const {index} = useParams(); // URL parameetri hankimine
   const navigate = useNavigate(); // Navigeerimiseks
+  const found = fxtrade[index];
+  const [loading, setLoading] = useState(true);
 
   const idRef = useRef();
   const strategyRef = useRef();
@@ -20,55 +21,47 @@ function EditFxTrade() {
   const openpriceRef = useRef();
   const closepriceRef = useRef();
   const pipsRef = useRef();
-  const profitlossRef = useRef();
   const imageRef = useRef();
 
-  // useEffect(() => {
-  //   const savedFxs = JSON.parse(localStorage.getItem('fxTrades'));
-  //   console.log('Loaded from localStorage:', savedFxs);
-  //   if (savedFxs) {
-  //     setFxs(savedFxs);
-  //   } else {
-  //     setFxs(fxJSON.slice());
-  //   }
-  // }, []);
+  useEffect(() => {
+    fetch(fxtradeUrl)
+      .then(res => res.json())
+      .then(json  => {
+        setFxTrade(json || [] )}) //
+        setLoading(false)
+  }, []);
 
-  // if (!fxs || fxs.length === 0) {
-  //   return <div>Loading...</div>;
-  // }
-
-  const found = fxs[Number(fxIndex)];
-  if (!found) {
-    return <div>Trade not found</div>;
-  }
 
   const edit = () => {
-    const updatedFxs = [...fxs];
-    updatedFxs[fxIndex] = {
-      id: Number(idRef.current.value),
-      strategy: strategyRef.current.value,
-      position: positionRef.current.value,
-      symbol: symbolRef.current.value,
-      date: dateRef.current.value,
-      time: Number(timeRef.current.value),
-      volume: Number(volumeRef.current.value),
-      openprice: Number(openpriceRef.current.value),
-      closeprice: Number(closepriceRef.current.value),
-      pips: Number(pipsRef.current.value),
-      profitloss: Number(profitlossRef.current.value),
-      image: imageRef.current.value,
+    fxtrade[index] = {
+      "id": Number(idRef.current.value),
+      "strategy": strategyRef.current.value,
+      "position": positionRef.current.value,
+      "symbol": symbolRef.current.value,
+      "date": dateRef.current.value,
+      "time": Number(timeRef.current.value),
+      "volume": Number(volumeRef.current.value),
+      "openprice": Number(openpriceRef.current.value),
+      "closeprice": Number(closepriceRef.current.value),
+      "pips": Number(pipsRef.current.value),
+      "image": imageRef.current.value,
     };
-
-    localStorage.setItem('fxTrades', JSON.stringify(updatedFxs)); // Salvestamine
-    setFxs(updatedFxs); // React seisundi värskendamine
-    navigate('/admin/maintain-fxtrade');
+    fetch(fxtradeUrl, {method:"PUT", body: JSON.stringify(fxtrade)})
+    .then(() => navigate('/admin/maintain-fxtrade'));
   };
+  if (loading === true) {
+    return <Spinner animation="border" variant="dark" />
+      }
+  if (found === undefined) {
+    return (<div>
+           <div>Trade not found</div>
 
+           </div>)
+  }
 
       return (
 
-
-    <div className="container">
+       <div className="container">
       
         {/* {idUnique === false && <div>ID is already in use!</div>} */}
         <br />
@@ -80,7 +73,7 @@ function EditFxTrade() {
         <Col>
         <div className="field">
           <label className="label">ID</label>
-          <input type="text" ref={idRef} defaultValue={found.id} className="input" />
+          <input  type="text" ref={idRef} defaultValue={found.id} className="input" />
         </div>
         <div className="field">
           <label className="label">Strategy</label>
@@ -120,10 +113,7 @@ function EditFxTrade() {
           <label className="label">Pips Earned</label>
           <input type="number" ref={pipsRef} defaultValue={found.pips} className="input" />
         </div>
-        <div className="field">
-          <label className="label">Profit/Loss</label>
-          <input type="number" ref={profitlossRef} defaultValue={found.profitloss} className="input" />
-        </div>
+       
         <div className="field">
           <label className="label">Image</label>
           <input type="text" ref={imageRef} defaultValue={found.image} className="input" />
@@ -134,7 +124,7 @@ function EditFxTrade() {
         <button onClick={edit} className="button">Edit</button>
       </div>
         
-        {/* <Link to="/admin/maintain-products">
+        {/* <Link to="/admin/maintain-fxtrades">
         
         </Link> */}
        

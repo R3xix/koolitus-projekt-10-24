@@ -5,6 +5,7 @@ import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
 function HomePage() {
   return (
     <div>
+      
        <Container>
       <Row className="px-4 my-5">
         <Col sm={7}><Image src="https://images.cnbctv18.com/wp-content/uploads/2022/09/cryptocurrency-2.jpg?impolicy=website&width=640&height=360" fluid rounded className=""/></Col>
@@ -22,7 +23,7 @@ function HomePage() {
       </Row>
       <Row>
          <Card className="text-center bg-secondary text-white my-5 py-1">
-            <Card.Body>This is some text within a card body.</Card.Body>
+            <p><Card.Body>This is some text within a card body.</Card.Body></p>
           </Card>
       </Row>
       <Row>
@@ -31,10 +32,9 @@ function HomePage() {
              <Card.Img variant="top" src="https://www.t4trade.com/wp-content/uploads/2022/12/trade-forex-guide.png"
              className="card-img-custom" />
              <Card.Body>
-             <Card.Title>Card Title</Card.Title>
+             <h1><Card.Title>Card Title</Card.Title></h1>
              <Card.Text>
-               Some quick example text to build on the card title and make up the
-               bulk of the card's content.
+             Bla bla bla bla bla blabla blablablablablablabla bla  bla bla bla bla blabla 
              </Card.Text>
             <Button variant="light">Go .....</Button>
             </Card.Body>
@@ -45,10 +45,9 @@ function HomePage() {
              <Card.Img variant="top" src="https://simplyethical.com/wp-content/uploads/2024/09/SE-20240917-Markets-in-September.jpg" 
              className="card-img-custom"/>
              <Card.Body>
-             <Card.Title>Card Title</Card.Title>
+             <h1><Card.Title>Card Title</Card.Title></h1>
              <Card.Text>
-               Some quick example text to build on the card title and make up the
-               bulk of the card's content.
+             Bla bla bla bla bla blabla blablablablablablabla bla  bla bla bla bla blabla 
              </Card.Text>
             <Button variant="light">Go .....</Button>
             </Card.Body>
@@ -60,10 +59,9 @@ function HomePage() {
              <Card.Img variant="top" src="https://img.freepik.com/free-photo/confident-handsome-hispanic-financial-broker-showing-fist-computer-screen-while-trading-from-home_662251-757.jpg"
               className="card-img-custom"/>
              <Card.Body>
-             <Card.Title>Card Title</Card.Title>
+             <h1><Card.Title>Card Title</Card.Title></h1>
              <Card.Text>
-               Some quick example text to build on the card title and make up the
-               bulk of the card's content.
+               Bla bla bla bla bla blabla blablablablablablabla bla  bla bla bla bla blabla 
              </Card.Text>
             <Button variant="light">Go ......</Button>
             </Card.Body>

@@ -1,66 +1,68 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
-import spotJSON from '../../components/data/spot.json';
-import Dropdown from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../../css/Tables.css"
 
 
 function SpotPage() {
-  const [spotCryptos] = useState(spotJSON.slice());
-  const [filterSymbol, setFilterSymbol] = useState('');
-  const [expandedRow, setExpandedRow] = useState(null); 
-  const filteredSpotCr = filterSymbol
-    ? spotCryptos.filter(spotCrypto => spotCrypto.symbol === filterSymbol)
-    : spotCryptos;
-
-  // Sümbolite unikaalne nimekiri
-  const symbols = Array.from(new Set(spotJSON.map(spotCrypto => spotCrypto.symbol)));
-
+  const [spots, setSpotCryptos] = useState([]);
   
-   const profitLossSum = filteredSpotCr.reduce(
-    (total, spotCrypto) => total + (spotCrypto.profitloss || 0), 
+  const [expandedRow, setExpandedRow] = useState(null); 
+  const spotsUrl="https://r3xix-fx-default-rtdb.europe-west1.firebasedatabase.app/spotTrade.json"
+  
+ 
+  const profitLossSum = spots.reduce(
+    (total, spots) => total + (spots.profitloss || 0), 
     0
   );
+  
+  useEffect(() => {
+    fetch(spotsUrl)
+      .then(res => res.json())
+      .then(json  => setSpotCryptos(json || [] )) //
+  }, []);
 
   return (
     <div>
+      <section className="table-header">
       <h1>Spot portfolio</h1>
-      <br /><br /> <br />
+      </section>
       <Table className="custom-table" striped bordered hover variant="light">
-      <thead>
+      <thead className="theader">
         <tr>
           <th>#</th>
-          <th>Logo</th>
-          <th>Date</th>
-          <th>Time</th>
           <th>Symbol</th>
           <th>Tokens</th>
+          <th>Date</th>
+          <th>Time</th>
           <th>Price</th>
           <th>Current price</th>
           <th>Profit/loss $</th>
+       
         </tr>
       </thead>
       <tbody>
-          {filteredSpotCr.map(spotCrypto => (
-            <React.Fragment key={spotCrypto.id}>
+          {spots.map(spot => (
+            <React.Fragment key={spot.id}>
               <tr
-                onClick={() => setExpandedRow(expandedRow === spotCrypto.id ? null : spotCrypto.id)} 
+                onClick={() => setExpandedRow(expandedRow === spot.id ? null : spot.id)} 
                 style={{ cursor: 'pointer' }}>
 
-                <td>{spotCrypto.id}</td>
-                <td><a href={spotCrypto.logo} target="_blank" rel="noopener noreferrer">
-                    <img style={{ width: '40px' }} src={spotCrypto.logo} alt="" /></a></td>
-                <td>{spotCrypto.symbol}</td>
-                <td>{spotCrypto.date}</td>
-                <td>{spotCrypto.time}</td>
-                <td>{spotCrypto.tokens}</td>
-                <td>{spotCrypto.price}</td>
-                <td>{spotCrypto.currentprice}</td>
-                <td style={{ color: spotCrypto.profitloss >= 0 ? 'green' : 'red', fontWeight: 'bold'  }}>
-                  {spotCrypto.profitloss}</td>
+                <td>{spot.id}</td>
+                <td><a href={spot.logo} target="_blank" rel="noopener noreferrer">
+                    <img style={{ width: '40px' }} src={spot.logo} alt="" /></a> {spot.symbol}</td>
+                <td>{spot.tokens}</td>
+                <td>{spot.date}</td>
+                <td>{spot.time}</td>
+                <td>{spot.price}</td>
+                <td>{spot.currentprice}</td>
+                <td style={{ color: spot.profitloss >= 0 ? 'green' : 'red', fontWeight: 'bold'  }}>
+                  {spot.profitloss}$</td>
+               
                 
                 
               </tr>
-              {expandedRow === spotCrypto.id && (
+              {expandedRow === spot.id && (
               <tr>
                 <td colSpan="10" style={{ backgroundColor: '#444', color: 'black' }}>
                 <div
@@ -71,15 +73,12 @@ function SpotPage() {
                   padding: '10px',
                   backgroundColor: 'white'}}>
                     <div style={{ flex: '1', paddingLeft: '10px' }}>
-                      <h5>Details for {spotCrypto.symbol}</h5>
-                      <p> Profit/Loss: <span style={{ color: spotCrypto.profitloss >= 0 ? 'green' : 'red',
-                          fontWeight: 'bold'}}>{spotCrypto.profitloss}</span></p>
-                      <p>Information: {spotCrypto.information}</p>
-                    </div>
-                    
-                    </div>
+                      <h5>Details for {spot.tokens}</h5>
+                      <p> Profit/Loss: <span style={{ color: spot.profitloss >= 0 ? 'green' : 'red',
+                          fontWeight: 'bold'}}>{spot.profitloss}</span></p>
+                      <p>Information: {spot.information}</p>
+                    </div></div>
                     </td>
-                  
                 </tr>
               )}
             </React.Fragment>
@@ -87,7 +86,7 @@ function SpotPage() {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="8" style={{ textAlign: 'right', fontWeight: 'bold' }}>Total Profit/Loss $:</td>
+            <td colSpan="7" style={{ textAlign: 'right', fontWeight: 'bold' }}>Total Profit/Loss $:</td>
             <td
               colSpan="2"
               style={{

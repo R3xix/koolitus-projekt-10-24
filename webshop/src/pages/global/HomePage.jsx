@@ -7,6 +7,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import Button from '@mui/material/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import "bootstrap/dist/css/bootstrap.min.css";
+import styles from"../../css/HomePage.module.css"
+
+// kui impordin import " .../  läheb üle terve projekti"
 
 function HomePage() {
     // const [products, setProducts] = useState(productsFromFile.slice());
@@ -31,11 +34,23 @@ function HomePage() {
      }, []);
 
     
-    
+                 // see mis avalehelt tuleb - ilma koguseta
     function addToCart(product) {
         // cartJSON.push(product);
         const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
-        cartLS.push(product);
+        const found = cartLS.find(cartProduct => cartProduct.toode.id === product.id)
+        if ( found !== undefined) {
+             // kui ta juba on olemas siis suurendan kogust
+             found.kogus++;
+             //product.kogus +=;
+             // product.kogus = product.kogus + 1
+            
+        } else {
+            // kui teda pole siis pushin
+            cartLS.push({"toode": product, "kogus": 1});
+        }
+
+        // cartLS.push(product); // push lisab ühe juurde
         localStorage.setItem("cart", JSON.stringify(cartLS));
         toast.success("Product added successfully!");
 
@@ -155,25 +170,26 @@ function HomePage() {
         <div>Find product: <input onChange={find} ref={findRef} type="text" /></div>
 
 
-        
+        <div className={styles.products}>
         {products
           .filter(product => product.active === true )
         .map(product =>
-        <div key={product.id} >
+        <div className={styles.product} key={product.id} >
             <img style={{width:"100px"}} src={product.image} alt="" />
             
-            <div>{product.title}</div>
+            <div className={styles.title}>{product.title}</div>
             <div>Price: {product.price}€</div>
-            <div>{product.category}</div>
-            <div>Rating: {product.rating.rate}</div>
-            <div>{product.rating.count}</div>
+            
+            
+            
             <Button  disabled={product.stock === 0} variant="contained" onClick={() => addToCart(product)}> Add to cart</Button>
            
             <Link to={"/product/" + product.id}>
              <Button variant="outlined" >See product</Button>
              </Link>
+             
         </div>
-         )}
+         )} </div>
         <ToastContainer />
     </div>
     </div>

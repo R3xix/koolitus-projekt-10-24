@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 function Books2() {
-    const [books, setBooks] = useState([]);
+    const [books, setBooks] = useState<{isbn13: string, cover_image:string, title:string, publication_year: number}[]>([]);
 
     useEffect(() => {
         fetch("https://www.freetestapi.com/api/v1/books")

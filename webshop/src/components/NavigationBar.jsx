@@ -1,12 +1,15 @@
 
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import { CartSumContext } from '../store/CartSumContext';
 
 
 function NavigationBar() {
+  const {cartSum} = useContext(CartSumContext)
   return (
     <div>
 
@@ -29,7 +32,7 @@ function NavigationBar() {
                     <NavDropdown.Item as={Link} to="admin/maintain-categories">Maintain categories</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to="admin/maintain-shops">Maintain shops</NavDropdown.Item>               
                 </NavDropdown>
-      
+                <Nav.Link >{cartSum} € </Nav.Link>
                 <Nav.Link as={Link} to="login">Login </Nav.Link>
                 <Nav.Link as={Link} to="signup">Sign Up</Nav.Link>
 

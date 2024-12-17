@@ -31,12 +31,12 @@
    height: 20px !important;
    padding: 0 !important;
 }
-.product-left {
+.product__left {
 display: flex;
 justify-content: space-between;
 width: 500px;
 }
-.product-right {
+.product__right {
    display: flex;
 justify-content: space-between;
 width: 200px;

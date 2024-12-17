@@ -1,0 +1,72 @@
+.addfxtrade {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .addfxtrade label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 14px;
+    color: #495057;
+  }
+  
+  .addfxtrade input {
+    padding: 8px;
+    height: 38px; /* Ühtne kõrgus */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+    box-sizing: border-box;
+  }
+  .addfxtrade select {
+    padding: 6px;
+    height: 38px; /* Ühtne kõrgus */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+    
+  }
+  
+  .addfxtrade input:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+  }
+  .addfxtrade select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+  }
+  
+  
+  .addfxtrade button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .addfxtrade button:hover {
+    background-color: #218838;
+  }
+  
+  .addfxtrade h1 {
+    font-size: 24px;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 20px;
+  }

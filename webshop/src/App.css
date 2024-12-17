@@ -90,12 +90,7 @@ h2 {
   color: #333;
   margin-bottom: 20px;
 }
-.bsactive {
-  background-color: rgb(172, 192, 172);
-}
-.inactive {
- background-color: rgb(174, 106, 106);
-}
+
 
 .carousel-container {
   display: flex;

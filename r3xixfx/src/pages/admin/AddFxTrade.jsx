@@ -1,83 +1,130 @@
 import React, { useEffect, useRef, useState } from 'react'
-import fxJSON from '../../components/data/fx.json';
+import { ToastContainer, toast } from 'react-toastify';
+import '../../css/AddFxTrade.css';
+
 
 function AddFxTrade() {
+  const [fxtrade, setFxTrade] = useState([]);
+  const fxtradeUrl="https://r3xix-fx-default-rtdb.europe-west1.firebasedatabase.app/fxtrades.json"
+  const [nextId, setNextId] = useState(null); // Järgmine vaba ID
 
-    const idRef = useRef();
     const strategyRef = useRef();
     const positionRef = useRef();
     const symbolRef = useRef();
     const dateRef = useRef();
-    const timeRef = useRef();
     const volumeRef = useRef();
     const openpriceRef = useRef();
     const closepriceRef = useRef();
-    const pipsRef = useRef();
-    const profitlossRef = useRef();
     const imageRef = useRef();
 
-    // const [fxs, setFxs] = useState(fxJSON.slice());
-    const [idUnique, setIdUnique] = useState(true);
+
+    // Eelnevalt määratud valikud
+  const strategies = ['Breakout', 'Scalping', 'Swing', 'Day Trading', 'Other'];
+  const positions = ['long', 'short'];
+  const symbols = ['EURUSD', 'GBPUSD', 'USDJPY', 'XAUUSD'];
+
+  useEffect(() => {
+    // Laeme olemasolevad andmed ja määrame järgmise ID
+    fetch(fxtradeUrl)
+      .then((res) => res.json())
+      .then((json) => {
+        const trades = json || [];
+        setFxTrade(trades);
+
+        // Arvuta järgmine vaba ID
+        const existingIds = trades.map((trade) => Number(trade.id)).sort((a, b) => a - b);
+        let newId = 1;
+        for (let i = 0; i < existingIds.length; i++) {
+          if (existingIds[i] !== newId) break;
+          newId++;
+        }
+        setNextId(newId);
+      });
+  }, []);
     
 
-
-      // useEffect(() => {
-      //   setFxs(fxJSON.slice());
-      // }, []);
-  
-// products???
-// kui lisada siis refreshiga kustub ära ei salvesta
-
-  
   const add = () => {
-    const fxs = JSON.parse(localStorage.getItem("fxs"))
-    fxJSON.push({
-            "id": Number(idRef.current.value),
+    fxtrade.push({
+            "id": nextId,
             "strategy": strategyRef.current.value,
             "position": positionRef.current.value,
             "symbol": symbolRef.current.value,
             "date": dateRef.current.value,
-            "time": Number(timeRef.current.value),
             "volume": Number(volumeRef.current.value),
             "openprice": Number(openpriceRef.current.value),
             "closeprice": Number(closepriceRef.current.value),
-            "pips": Number(pipsRef.current.value),
-            "profitloss": Number(profitlossRef.current.value),
             "image": imageRef.current.value
               })
-     localStorage.setItem("fxs", JSON.stringify("fxs"));
-     
-     
-      // toast.success("Product added!");
-      
-      // õige arendus: saadame toote back-endi, et back-end paneks andmebaasi
+    toast.success("Product added!");
+    fetch(fxtradeUrl, {method: "PUT", body: JSON.stringify(fxtrade)})
+    // Uuenda järgmine vaba ID
+    setNextId((prevId) => prevId + 1);
   }
-  const checkIdUniqueness = () => {
-    const result = fxJSON.filter(fx => fx.id === Number(idRef.current.value));
-    setIdUnique(result.length === 0);
-  };
-  
+
 
 return (
-  <div>
-    {idUnique === false && <div>ID is already in use!</div>}
-      <label >New ID: <input onChange={checkIdUniqueness} ref={idRef}type="number" /></label>
-      <br />
-      <label>Strategy: <input ref={strategyRef }type="text" /></label>
-       <br />
-      <label>Position: <input ref={positionRef }type="text" /></label><br />
-      <label>Symbol: <input ref={symbolRef }type="text" /></label><br />
-      <label>Date <input ref={dateRef }type="text" /></label><br />
-      <label>Time: <input ref={timeRef }type="text" /></label><br />
-      <label>Volume: <input ref={volumeRef }type="number" /></label><br />
-      <label>Open Price: <input ref={openpriceRef}type="number" /></label><br />
-      <label>Close price <input ref={closepriceRef }type="number" /></label><br />
-      <label>Pips earned <input ref={pipsRef }type="number" /></label><br />
-      <label>Profit/loss $ <input ref={profitlossRef }type="number" /></label><br />
-      <label>Image <input ref={imageRef }type="text" /></label><br />
-      <button onClick={add}>Add</button><br /><br />
-      {/* <ToastContainer /> */}
-  </div>
+  <div className="addfxtrade-container">
+  <h2>Add new trade</h2>
+  <section className="addfxtrade">
+    <label>
+      New ID:
+      <input value={nextId || ''} disabled type="number" />
+    </label>
+    <label>
+      Strategy:
+      <select ref={strategyRef}>
+        {strategies.map((strategy) => (
+          <option key={strategy} value={strategy}>
+            {strategy}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Position:
+      <select ref={positionRef}>
+        {positions.map((position) => (
+          <option key={position} value={position}>
+            {position}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Symbol:
+      <select ref={symbolRef}>
+        {symbols.map((symbol) => (
+          <option key={symbol} value={symbol}>
+            {symbol}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Date:
+      <input ref={dateRef} type="date" />
+    </label>
+    <label>
+      Volume:
+      <input ref={volumeRef} type="number" />
+    </label>
+    <label>
+      Open Price:
+      <input ref={openpriceRef} type="number" />
+    </label>
+    <label>
+      Close Price:
+      <input ref={closepriceRef} type="number" />
+    </label>
+    <label>
+      Image:
+      <input ref={imageRef} type="text" />
+    </label>
+    <button className="addfxtrade-btn" onClick={add}>Add</button>
+  </section>
+  
+  <ToastContainer />
+</div>
 )
 }
 export default AddFxTrade
